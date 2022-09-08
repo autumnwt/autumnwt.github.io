@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>PHP基础简记</title>
+      <link href="/2022/09/07/php-ji-chu-jian-ji/"/>
+      <url>/2022/09/07/php-ji-chu-jian-ji/</url>
+      
+        <content type="html"><![CDATA[<h1 id="PHP基础简记"><a href="#PHP基础简记" class="headerlink" title="PHP基础简记"></a>PHP基础简记</h1><h2 id="PHP标记"><a href="#PHP标记" class="headerlink" title="PHP标记"></a><strong>PHP标记</strong></h2><p> 1.脚本标记   </p><pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">&lt;script language="php"&gt;  echo 'hello world';&lt;/script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p> 2.标准标记  </p><pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">&lt;?php  echo 'hello world';?&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> PHP </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PHP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="/2022/09/02/hello-world/"/>
       <url>/2022/09/02/hello-world/</url>
