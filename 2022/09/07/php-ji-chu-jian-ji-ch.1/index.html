@@ -4,15 +4,15 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="PHP基础简记, AutumnWt">
-    <meta name="description" content="PHP基础简记PHP标记 1.脚本标记   
+    <meta name="keywords" content="PHP基础简记ch.1, AutumnWt">
+    <meta name="description" content="PHP基础简记ch.1PHP标记 1.脚本标记   
 &amp;lt;script language=&#34;php&#34;&amp;gt;
   echo &#39;hello world&#39;;
 &amp;lt;/script&amp;gt;
 
  2.标准标记  
 &amp;lt;?php
-  echo &#39;h">
+  ech">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -24,7 +24,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>PHP基础简记 | AutumnWt</title>
+    <title>PHP基础简记ch.1 | AutumnWt</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -349,7 +349,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">PHP基础简记</h1>
+                    <h1 class="description center-align post-title">PHP基础简记ch.1</h1>
                 </div>
             </div>
         </div>
@@ -375,6 +375,10 @@
                         
                             <a href="/tags/PHP/">
                                 <span class="chip bg-color">PHP</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%AF%AD%E8%A8%80/">
+                                <span class="chip bg-color">语言</span>
                             </a>
                         
                     </div>
@@ -407,14 +411,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    891
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -432,7 +436,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="PHP基础简记"><a href="#PHP基础简记" class="headerlink" title="PHP基础简记"></a>PHP基础简记</h1><h2 id="PHP标记"><a href="#PHP标记" class="headerlink" title="PHP标记"></a><strong>PHP标记</strong></h2><p> 1.脚本标记   </p>
+                <h1 id="PHP基础简记ch-1"><a href="#PHP基础简记ch-1" class="headerlink" title="PHP基础简记ch.1"></a>PHP基础简记ch.1</h1><h2 id="PHP标记"><a href="#PHP标记" class="headerlink" title="PHP标记"></a><strong>PHP标记</strong></h2><p> 1.脚本标记   </p>
 <pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">&lt;script language="php"&gt;
   echo 'hello world';
 &lt;/script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -546,12 +550,51 @@
 </ul>
 </li>
 </ul>
-<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a><strong>类型转换</strong></h2><p>需要指定数据类型，需要外部数据  </p>
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><p>需要指定数据类型，需要外部数据  </p>
 <ul>
 <li>自动转换：系统根据需求自己判定，效率偏低  </li>
-<li>强制转换：人为转换</li>
+<li>强制转换：人为转换，在变量前加一个括号，在里面写入对应类型</li>
 </ul>
-<p>在转换过程中，用的比较多的为转布尔类型和转数值类型，关于转布尔的说明：<br><img src="/2022/09/07/php-ji-chu-jian-ji/about_bool.jpg" alt="转布尔的说明"></p>
+<p>在转换过程中，用的比较多的为转布尔类型和转数值类型，关于转布尔的说明：<br><img src="/2022/09/07/php-ji-chu-jian-ji-ch.1/about_bool.jpg" alt="布尔相关的说明">  </p>
+<p>字符串转数值的说明  </p>
+<ul>
+<li>布尔true为1， false为0  </li>
+<li>字符串转数值：<ul>
+<li>以字母开头的字符串永远为0</li>
+<li>以数字开头的字符串，取到碰到字符串为止（不会出现多个小数点）</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">&lt;?php
+  $a = 'abc1.1.1';
+  $b = '1.1.1abc'; //创建数据
+
+  echo $a + $b;  //自动转换
+  //算数+运算，系统先转换成数值类型（整型和浮点型）
+  //结果为1.1
+  
+  echo (float)$a,(foloat)$b;
+ //输出结果01.1
+?&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="数据类型判断"><a href="#数据类型判断" class="headerlink" title="数据类型判断"></a>数据类型判断</h3><p>通过一组类型判断函数，来判断变量，最终返回这个变量所保存的数据类型（如果相同返回true）：以is_开头后面跟类型名字的函数: is_xxx(变量名)</p>
+<p>bool类型不能用echo来查看，可使用<code>var_dump</code>结构来查看  </p>
+<p>还有一组函数可以来获取积极设定数据的类型 gettype(变量名)：获取类型，得到的是该类型对应的字符串</p>
+<p>settype(变量名，类型): 设定数据类型：与强制转换不同  </p>
+<ul>
+<li>强制转换是对数据值复制的内容进行处理  </li>
+<li>settype会改变变量本身</li>
+</ul>
+<h3 id="整数类型进制"><a href="#整数类型进制" class="headerlink" title="整数类型进制"></a>整数类型进制</h3><blockquote>
+<p>在PHP中提供了四种类型的定义方式：十进制、二进制、八进制、十六进制<br><code>$a=120; //十进制</code><br><code>$a=0b120; //二进制</code><br><code>$a=0120; //八进制</code><br><code>$a=0x120; //十六进制</code>  </p>
+</blockquote>
+<h3 id="整数类型进制转换"><a href="#整数类型进制转换" class="headerlink" title="整数类型进制转换"></a>整数类型进制转换</h3><ul>
+<li><code>decbin()</code>:10转2  </li>
+<li><code>decoct()</code>:10转8  </li>
+<li><code>dechex()</code>:10转16  </li>
+<li><code>bindec()</code>:2转10</li>
+</ul>
+<h3 id="浮点类型"><a href="#浮点类型" class="headerlink" title="浮点类型"></a>浮点类型</h3><p>整型超过自身存储的大小后会用浮点型存储  </p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a><strong>运算符</strong></h2><p>与其他语言几乎一致，补充一点‘全等于’：<code>===</code> 左边与右边相同(大小、数据类型)</p>
 
                 
             </div>
@@ -578,7 +621,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://autumnwt.github.io/2022/09/07/php-ji-chu-jian-ji/">https://autumnwt.github.io/2022/09/07/php-ji-chu-jian-ji/</a>
+                    <a href="https://autumnwt.github.io/2022/09/07/php-ji-chu-jian-ji-ch.1/">https://autumnwt.github.io/2022/09/07/php-ji-chu-jian-ji-ch.1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -618,6 +661,10 @@
                             
                                 <a href="/tags/PHP/">
                                     <span class="chip bg-color">PHP</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%AF%AD%E8%A8%80/">
+                                    <span class="chip bg-color">语言</span>
                                 </a>
                             
                         </div>
@@ -701,13 +748,13 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2022/09/07/php-ji-chu-jian-ji/">
+                <a href="/2022/09/07/php-ji-chu-jian-ji-ch.1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="PHP基础简记">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="PHP基础简记ch.1">
                         
-                        <span class="card-title">PHP基础简记</span>
+                        <span class="card-title">PHP基础简记ch.1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -738,6 +785,10 @@
                     
                     <a href="/tags/PHP/">
                         <span class="chip bg-color">PHP</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">语言</span>
                     </a>
                     
                 </div>
@@ -917,7 +968,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">964</span>
+                        class="white-color">1.4k</span>
             
             
             
