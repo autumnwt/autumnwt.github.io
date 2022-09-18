@@ -429,14 +429,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    914
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    7 分
                 </div>
                 
 
@@ -541,6 +541,115 @@
 <li>ListTraverse(&amp;L,visited()):线性表已存在的条件下，依次对线性表中的每个元素调用遍历visited()</li>
 </ul>
 <p>以上提及的运算是逻辑结构上定义的运算，只要给出这些运算功能是“做什么”，至于“如何做”，只有待确定了存储结构之后才考虑</p>
+<h2 id="线性表的顺序表示和实现"><a href="#线性表的顺序表示和实现" class="headerlink" title="线性表的顺序表示和实现"></a><strong>线性表的顺序表示和实现</strong></h2><p>顺序存储：把逻辑上相邻的数据元素储存在物理上相邻的存储单元中的存储结构  </p>
+<blockquote>
+<p>线性表中的第一个数据元素a1的存储位置，称作线性表的<strong>起始位置</strong>或<strong>基地址</strong>  </p>
+</blockquote>
+<p><img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/6.jpg" alt="两种方式">   </p>
+<p>假设线性表的每个元素需要占用k个存储单元，则第i+1个数据元素的存储位置和第i个数据元素的存储位置之间满足:LOC(ai+1)=LOC(ai)+k ；同时LOC(ai)=LOC(ai)+(i-1)*k  </p>
+<blockquote>
+<p>顺序表元素-&gt;数组元素<br>用一维数组表示顺序表  </p>
+</blockquote>
+<p>线性表长度可变但数组长度不可动态定义<br>-&gt;用以变量表示顺序表的长度属性  </p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">#define LIST INIT SIZE 100 //线性表存储空间的初始分配量  
+typedef struct {
+    ElemType elem[LIST_INIT_SIZE];
+    int length; //当前长度
+}SqList;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>多项式的顺序结构储存结构类型定义</strong>  </p>
+<p><img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/7.jpg">  </p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">#define MAXSIZE 1000 //多项式可能达到的最大长度
+typedef struct {  //多项式非零项的定义
+  float p;  //系数
+  int e;  //指数
+}Polynomial;
+   
+typedef struct {  
+  Polynomial *elem;  //储存空间的基地址
+  int length;  //多项式中当前项的个数
+}SqList;//多项式的顺序储存结构类型为SqList
+```  
+
+**图书表的顺序存储结构类型定义**  
+ ![](./%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E7%BA%BF%E6%80%A7%E8%A1%A8/8.jpg)  
+
+ ```C
+#define MAXSIZE 1000 //图书表可能达到的最大长度
+typedef struct {  //图书信息定义
+  char no[20];
+  char name[50];
+  float price;
+}Book;
+   
+typedef struct { 
+  Book *elem;  //储存空间的基地址
+  int length;  //图书表中当前图书个数
+}SqList;//图书表的顺序储存结构类型为SqList  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>线性表的数据类型定义模板</strong><br> <img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/9.jpg"> </p>
+<h2 id="类C语言有关操作"><a href="#类C语言有关操作" class="headerlink" title="类C语言有关操作"></a><strong>类C语言有关操作</strong></h2><p>数组静态分配：<br> </p><pre class="line-numbers language-C" data-language="C"><code class="language-C">typedef struct { 
+  Elem Type data[MaxSize];  
+  int length;  
+}SqList;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<blockquote>
+<p>data:首元素地址</p>
+</blockquote>
+<p>数组动态分布<br> </p><pre class="line-numbers language-C" data-language="C"><code class="language-C">typedef struct { 
+  Elem Type *data;  
+  int length;  
+}SqList;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<blockquote>
+<p>SqList L;<br>L.data=(Elem Type*)malloc(sizeof(Elem Type)*MaxSize);  </p>
+</blockquote>
+<p><code>malloc(m)</code>函数：开辟m字节长度的地址空间，并返回这段空间的首地址<br><code>sizeof(x)</code>运算：计算变量x的长度<br><code>free(p)</code>函数：释放指针p所指变量的存储空间，即彻底删除一个变量  </p>
+<blockquote>
+<p>需要加载头文件<code>&lt;stdlib.h&gt;</code>  </p>
+</blockquote>
+<p>补充：<br><strong>C++的动态存储分配</strong><br>new 类型名T(初始列表)<br>功能：申请用于存放T类型对象的内存空间，并依初值列表赋值以初值<br>结果值：  </p>
+<ul>
+<li>成功：T类型指针，指向新分配内存  </li>
+<li>失败：0 （NULL）</li>
+</ul>
+<p><code>int *p1 = new int;</code><br>或 <code>int *p1 = new int（10）;</code><br>使用 <code>delete 指针P</code> 释放 </p>
+<h2 id="线性表的顺序表示和实现-1"><a href="#线性表的顺序表示和实现-1" class="headerlink" title="线性表的顺序表示和实现"></a><strong>线性表的顺序表示和实现</strong></h2><p>线性表类型的构造（回顾）：<br> </p><pre class="line-numbers language-C" data-language="C"><code class="language-C">typedef struct { 
+  Elem Type data[MaxSize];  
+  int length;  
+}SqList;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><br>线性表变量L的定义以及成员读取：<br> <pre class="line-numbers language-C" data-language="C"><code class="language-C">SqList L;
+L.elem;
+//or
+SqList *L;
+L-&gt;elem;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>补充：操作算法中用到的预定义常量和类型<br> <img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/10.jpg"> <p></p>
+<p><strong>算法1</strong> 线性表的初始化：<br> </p><pre class="line-numbers language-C" data-language="C"><code class="language-C">Status InitList_Sq(SqList &amp;L){
+  L.elem=new eLEMType[MAXSIZE];
+  if(!L.elem) exit(OVERFLOW);
+  L.length=0; //空表长度为0
+  return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<p><strong>算法2</strong> 线性表的销毁：<br> </p><pre class="line-numbers language-C" data-language="C"><code class="language-C">void DestroyList(SqList &amp;L){
+ if(L.elem)delete L.elem;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p></p>
+<p><strong>算法3</strong> 线性表的清空：<br> </p><pre class="line-numbers language-C" data-language="C"><code class="language-C">void CleanList(SqList &amp;L){
+ L.Length=0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><br><strong>算法4</strong> 线性表的长度：<br> <pre class="line-numbers language-C" data-language="C"><code class="language-C">int GetLength(SqList L){
+ renturn(L.Length);
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><br><strong>算法5</strong> 判断线性表是否为空：<br> <pre class="line-numbers language-C" data-language="C"><code class="language-C">int IsEmpty(SqList L){
+ if(L.Length==0)return 1;
+ else return 0；
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><br><strong>算法6</strong> 顺序表的取值（取值i元素）：<br> <pre class="line-numbers language-C" data-language="C"><code class="language-C">int GetElem(SqList L, ElemType &amp;e){
+ if(i&lt;1||i&gt;L.length)return ERROR;
+
+ e=L.elem[i-1];
+ return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br><strong>算法7</strong> 顺序表的查找（顺序查找）：<br> <pre class="line-numbers language-C" data-language="C"><code class="language-C">int LocateElem(SqList L, ElemType e){
+ for(i=0；i&lt;L.length;i++)
+   if(L.elem[i]==e) return i+1;
+
+ return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br><strong>算法8</strong> 顺序表的查找：<br> <pre class="line-numbers language-C" data-language="C"><code class="language-C">int LocateElem(SqList L, ElemType e){
+ for(i=0；i&lt;L.length;i++)
+   if(L.elem[i]==e) return i+1;
+
+ return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br> <img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/11.jpg"><p></p>
 
                 
             </div>
@@ -938,7 +1047,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">2.3k</span>
+                        class="white-color">3.3k</span>
             
             
             
