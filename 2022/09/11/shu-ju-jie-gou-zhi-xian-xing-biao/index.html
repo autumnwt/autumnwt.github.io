@@ -429,14 +429,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    2.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    12 分
                 </div>
                 
 
@@ -717,12 +717,98 @@ typedef struct Lnode{
  struct Lnode *next;  
 }Lnode,*LinkList;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="算法1-单链表的初始化"><a href="#算法1-单链表的初始化" class="headerlink" title="算法1 单链表的初始化"></a><strong>算法1</strong> 单链表的初始化</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">Status InitList L(LinkList &amp;L){
+   L=new LNode;  //或 L=(LinkList)malloc (sizeof(LNode));
+   L-&gt;next=NULL;
+   return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="算法2-判断链表是否为空"><a href="#算法2-判断链表是否为空" class="headerlink" title="算法2 判断链表是否为空"></a><strong>算法2</strong> 判断链表是否为空</h3><p>空表：链表中无元素，称为空链表(头指针和头结点仍然在)</p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">int ListEmpty (LinkList L){
+ if(L-&gt;next) //非空
+   return 0;
+ else 
+   return 1;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="算法3-单链表的销毁"><a href="#算法3-单链表的销毁" class="headerlink" title="算法3 单链表的销毁"></a><strong>算法3</strong> 单链表的销毁</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">Status DestroyList_L(LinkList &amp;L){
+ Lnode *p;
+ while(L){
+   p=L;
+   L=L-&gt;next;
+   delete p;
+ }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="算法4-清空单链表"><a href="#算法4-清空单链表" class="headerlink" title="算法4 清空单链表"></a><strong>算法4</strong> 清空单链表</h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">Status ClearList(LinkList &amp;L){
+   Lnode *p，*q；
+   p=L-&gt;next;
+   while(p){
+     q=p-&gt;next;
+     delete p;
+     p=q;
+   }
+  L-&gt;next=NULL;
+  return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="算法5-单链表表长"><a href="#算法5-单链表表长" class="headerlink" title="算法5 单链表表长"></a><strong>算法5</strong> 单链表表长</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">int ListLength_L(LinkList L){
+   LinkList p; //Lnode *p;
+    p=L-&gt;next; //p指向第一个结点
+     i=0;
+     while(p){
+       i++;
+       p=p-&gt;next;
+     }
+   return i;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="算法6-单链表表长"><a href="#算法6-单链表表长" class="headerlink" title="算法6 单链表表长"></a><strong>算法6</strong> 单链表表长</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">int ListLength_L(LinkList L){
+   LinkList p; //Lnode *p;
+    p=L-&gt;next; //p指向第一个结点
+     i=0;
+     while(p){
+       i++;
+       p=p-&gt;next;
+     }
+   return i;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="算法7-取值-取单链表中第i个元素内容"><a href="#算法7-取值-取单链表中第i个元素内容" class="headerlink" title="算法7 取值-取单链表中第i个元素内容"></a><strong>算法7</strong> 取值-取单链表中第i个元素内容</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">Status GetElem L(LinkList L, int i,ElemType &amp;e){
+  p=L-&gt;next;
+  j=1;
+  while(p &amp;&amp; j&lt;i){
+    p=p-&gt;next; ++j;
+  }
+  if(!p||j&gt;i) return ERROR;  
+  e=p-&gt;data;
+  return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="算法8-按值查找-根据指定数据获取该数据所在的位置-地址"><a href="#算法8-按值查找-根据指定数据获取该数据所在的位置-地址" class="headerlink" title="算法8 按值查找-根据指定数据获取该数据所在的位置(地址)"></a><strong>算法8</strong> 按值查找-根据指定数据获取该数据所在的位置(地址)</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">Lnode *LocateElem_L(LinkList L,ElemType e){
+  P=L-&gt;next;
+  while(p&amp;&amp;p-&gt;data!=e)
+     p=p-&gt;next;
+  return p;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="算法8-变化-按值查找-根据指定数据获取该数据所在的位置序号"><a href="#算法8-变化-按值查找-根据指定数据获取该数据所在的位置序号" class="headerlink" title="算法8-变化 按值查找-根据指定数据获取该数据所在的位置序号"></a><strong>算法8-变化</strong> 按值查找-根据指定数据获取该数据所在的位置序号</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">int LocateElem_L(LinkList L,ElemType e){
+  P=L-&gt;next; j=1;
+  while(p&amp;&amp;p-&gt;data!=e)
+     {p=p-&gt;next;j++;}
+  if(p)return j;
+  else return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="算法9-插入-在第i个结点前插入值为e的新结点"><a href="#算法9-插入-在第i个结点前插入值为e的新结点" class="headerlink" title="算法9 插入-在第i个结点前插入值为e的新结点"></a><strong>算法9</strong> 插入-在第i个结点前插入值为e的新结点</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">Status ListInsert_L(LinkList &amp;L,int i,ElemType e){
+  P=L;j=0;
+  while(p&amp;&amp;j&lt;i-1)
+     {p=p-&gt;next;++j;}
+  if(p||j&gt;i-1)return ERROR;
+  s=new LNode; s-&gt;data=e;
+  s-&gt;next=p-&gt;next;
+  p-&gt;next=s;
+  return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -1120,7 +1206,7 @@ typedef struct Lnode{
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">3.8k</span>
+                        class="white-color">4.3k</span>
             
             
             
