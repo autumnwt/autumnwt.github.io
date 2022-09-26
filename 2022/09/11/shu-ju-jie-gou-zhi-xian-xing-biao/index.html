@@ -429,14 +429,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.8k
+                    3.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    13 分
                 </div>
                 
 
@@ -797,6 +797,78 @@ typedef struct Lnode{
   p-&gt;next=s;
   return OK;
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="算法9-删除-删除第i个结点"><a href="#算法9-删除-删除第i个结点" class="headerlink" title="算法9 删除-删除第i个结点"></a><strong>算法9</strong> 删除-删除第i个结点</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">Status ListDelete_L(LinkList &amp;L,int i,ElemType &amp;e){
+  P=L;j=0;
+  while(p-&gt;next&amp;&amp;j&lt;i-1){p=p-&gt;next;++j;}
+     
+  if(!p-&gt;next||j&gt;i-1)return ERROR;
+  q=p-&gt;next;
+  p-&gt;next=q-&gt;next;
+  e=q-&gt;data;
+  delete q;
+  return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>单链表各算法时间效率  </p>
+<ul>
+<li>查找：O(n)</li>
+<li>插入和删除：一般情况下O(1),但如果从头查找，所消耗的时间复杂度为O(n)</li>
+</ul>
+</blockquote>
+<h3 id="算法10-单链表的建立"><a href="#算法10-单链表的建立" class="headerlink" title="算法10 单链表的建立"></a><strong>算法10</strong> 单链表的建立</h3><p>头插法：元素插入到链表头部<br><img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/20.jpg"> </p>
+<p>首先，在内存中找到一个空间存放头结点  </p>
+<blockquote>
+<p><img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/21.jpg"><br><code>L=new LNode;</code>或<code>L=(LinkList)malloc(sizeof(LNode));</code>  </p>
+</blockquote>
+<p>将头结点置空  </p>
+<blockquote>
+<p>L-&gt;next=NULL;</p>
+</blockquote>
+<p>依次插入其余结点，从最后一个结点开始  </p>
+<blockquote>
+<p><img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/22.jpg"><br><code>p=new LNode;  p-&gt;data=an;</code> </p>
+</blockquote>
+<p>将L的next域赋值给p的next域，并将头结点L的next赋值为新结点P的地址  </p>
+<blockquote>
+<p><img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/23.jpg"><br><code>p=next=L-&gt;next;  L-&gt;next=p;</code>  </p>
+</blockquote>
+<p>继续放置前一个结点</p>
+<blockquote>
+<p><img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/24.jpg"><br><code>p=new LNode; p-&gt;data=an-1</code>  </p>
+</blockquote>
+<p>再接着做之前的步骤  </p>
+<blockquote>
+<p><img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/25.jpg"><br><code>p=next=L-&gt;next;  L-&gt;next=p;</code><br>反复循环，直到所有元素都插入  </p>
+</blockquote>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">//倒位序输入n个元素值
+void CreateList_H(LinkList &amp;L,int n){
+   L=new LNode;
+   L-&gt;next=NULL;
+   for(i=n;i&gt;0;--i){
+     p=new LNode;
+     scanf(&amp;p-&gt;data);
+     p-&gt;next=L-&gt;next;
+     L-&gt;next=p;
+   }
+ }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>尾插法：元素插入在链表尾部  </p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">//正位序输入n个元素值
+void CreateList_H(LinkList &amp;L,int n){
+   L=new LNode;
+   L-&gt;next=NULL;
+   r=L;//尾指针r指向头结点
+   for(i=0;i&lt;n;++i){
+     p=new LNode;
+     scanf(&amp;p-&gt;data);
+     p-&gt;next=NULL;
+     r-&gt;next=p;
+     r=p;//r指向新的尾结点
+   }
+ }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -1194,7 +1266,7 @@ typedef struct Lnode{
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">4.2k</span>
+                        class="white-color">4.6k</span>
             
             
             
