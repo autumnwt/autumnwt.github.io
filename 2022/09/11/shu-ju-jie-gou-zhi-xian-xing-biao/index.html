@@ -429,14 +429,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.9k
+                    2.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    12 分
+                    11 分
                 </div>
                 
 
@@ -567,14 +567,10 @@ typedef struct {  //多项式非零项的定义
 typedef struct {  
   Polynomial *elem;  //储存空间的基地址
   int length;  //多项式中当前项的个数
-}SqList;//多项式的顺序储存结构类型为SqList
-```  
+}SqList;//多项式的顺序储存结构类型为SqList<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-**图书表的顺序存储结构类型定义**  
- ![](./%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E7%BA%BF%E6%80%A7%E8%A1%A8/8.jpg)  
-
- ```C
-#define MAXSIZE 1000 //图书表可能达到的最大长度
+<p><strong>图书表的顺序存储结构类型定义</strong><br><img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/8.jpg"></p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">#define MAXSIZE 1000 //图书表可能达到的最大长度
 typedef struct {  //图书信息定义
   char no[20];
   char name[50];
@@ -584,8 +580,8 @@ typedef struct {  //图书信息定义
 typedef struct { 
   Book *elem;  //储存空间的基地址
   int length;  //图书表中当前图书个数
-}SqList;//图书表的顺序储存结构类型为SqList  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="线性表的数据类型定义模板"><a href="#线性表的数据类型定义模板" class="headerlink" title="线性表的数据类型定义模板"></a><strong>线性表的数据类型定义模板</strong></h3><p> <img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/9.jpg"> </p>
+}SqList;//图书表的顺序储存结构类型为SqList  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="线性表的数据类型定义模板"><a href="#线性表的数据类型定义模板" class="headerlink" title="线性表的数据类型定义模板"></a><strong>线性表的数据类型定义模板</strong></h3><p><img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/9.jpg"> </p>
 <h2 id="类C语言有关操作"><a href="#类C语言有关操作" class="headerlink" title="类C语言有关操作"></a><strong>类C语言有关操作</strong></h2><p>数组静态分配：<br> </p><pre class="line-numbers language-C" data-language="C"><code class="language-C">typedef struct { 
   Elem Type data[MaxSize];  
   int length;  
@@ -762,18 +758,8 @@ typedef struct Lnode{
    return i;
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="算法6-单链表表长"><a href="#算法6-单链表表长" class="headerlink" title="算法6 单链表表长"></a><strong>算法6</strong> 单链表表长</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">int ListLength_L(LinkList L){
-   LinkList p; //Lnode *p;
-    p=L-&gt;next; //p指向第一个结点
-     i=0;
-     while(p){
-       i++;
-       p=p-&gt;next;
-     }
-   return i;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="算法7-取值-取单链表中第i个元素内容"><a href="#算法7-取值-取单链表中第i个元素内容" class="headerlink" title="算法7 取值-取单链表中第i个元素内容"></a><strong>算法7</strong> 取值-取单链表中第i个元素内容</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">Status GetElem L(LinkList L, int i,ElemType &amp;e){
+<h3 id="算法6-取值"><a href="#算法6-取值" class="headerlink" title="算法6 取值"></a><strong>算法6</strong> 取值</h3><p> 取单链表中第i个元素内容  </p>
+ <pre class="line-numbers language-C" data-language="C"><code class="language-C">Status GetElem L(LinkList L, int i,ElemType &amp;e){
   p=L-&gt;next;
   j=1;
   while(p &amp;&amp; j&lt;i){
@@ -784,14 +770,16 @@ typedef struct Lnode{
   return OK;
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="算法8-按值查找-根据指定数据获取该数据所在的位置-地址"><a href="#算法8-按值查找-根据指定数据获取该数据所在的位置-地址" class="headerlink" title="算法8 按值查找-根据指定数据获取该数据所在的位置(地址)"></a><strong>算法8</strong> 按值查找-根据指定数据获取该数据所在的位置(地址)</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">Lnode *LocateElem_L(LinkList L,ElemType e){
+<h3 id="算法7-按值查找"><a href="#算法7-按值查找" class="headerlink" title="算法7 按值查找"></a><strong>算法7</strong> 按值查找</h3><p>根据指定数据获取该数据所在的位置(地址)</p>
+ <pre class="line-numbers language-C" data-language="C"><code class="language-C">Lnode *LocateElem_L(LinkList L,ElemType e){
   P=L-&gt;next;
   while(p&amp;&amp;p-&gt;data!=e)
      p=p-&gt;next;
   return p;
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="算法8-变化-按值查找-根据指定数据获取该数据所在的位置序号"><a href="#算法8-变化-按值查找-根据指定数据获取该数据所在的位置序号" class="headerlink" title="算法8-变化 按值查找-根据指定数据获取该数据所在的位置序号"></a><strong>算法8-变化</strong> 按值查找-根据指定数据获取该数据所在的位置序号</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">int LocateElem_L(LinkList L,ElemType e){
+<h3 id="算法7-变化-按值查找"><a href="#算法7-变化-按值查找" class="headerlink" title="算法7-变化 按值查找"></a><strong>算法7-变化</strong> 按值查找</h3><p>根据指定数据获取该数据所在的位置序号</p>
+ <pre class="line-numbers language-C" data-language="C"><code class="language-C">int LocateElem_L(LinkList L,ElemType e){
   P=L-&gt;next; j=1;
   while(p&amp;&amp;p-&gt;data!=e)
      {p=p-&gt;next;j++;}
@@ -799,7 +787,7 @@ typedef struct Lnode{
   else return 0;
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="算法9-插入-在第i个结点前插入值为e的新结点"><a href="#算法9-插入-在第i个结点前插入值为e的新结点" class="headerlink" title="算法9 插入-在第i个结点前插入值为e的新结点"></a><strong>算法9</strong> 插入-在第i个结点前插入值为e的新结点</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">Status ListInsert_L(LinkList &amp;L,int i,ElemType e){
+<h3 id="算法8-插入-在第i个结点前插入值为e的新结点"><a href="#算法8-插入-在第i个结点前插入值为e的新结点" class="headerlink" title="算法8 插入-在第i个结点前插入值为e的新结点"></a><strong>算法8</strong> 插入-在第i个结点前插入值为e的新结点</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">Status ListInsert_L(LinkList &amp;L,int i,ElemType e){
   P=L;j=0;
   while(p&amp;&amp;j&lt;i-1)
      {p=p-&gt;next;++j;}
@@ -1206,7 +1194,7 @@ typedef struct Lnode{
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">4.3k</span>
+                        class="white-color">4.2k</span>
             
             
             
