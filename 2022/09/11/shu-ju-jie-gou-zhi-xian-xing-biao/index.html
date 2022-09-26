@@ -583,14 +583,14 @@ typedef struct {
 }SqList;//图书表的顺序储存结构类型为SqList  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="线性表的数据类型定义模板"><a href="#线性表的数据类型定义模板" class="headerlink" title="线性表的数据类型定义模板"></a><strong>线性表的数据类型定义模板</strong></h3><p><img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/9.jpg"> </p>
 <h2 id="类C语言有关操作"><a href="#类C语言有关操作" class="headerlink" title="类C语言有关操作"></a><strong>类C语言有关操作</strong></h2><p>数组静态分配：<br> </p><pre class="line-numbers language-C" data-language="C"><code class="language-C">typedef struct { 
-  Elem Type data[MaxSize];  
+  ElemType data[MaxSize];  
   int length;  
 }SqList;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p></p>
 <blockquote>
 <p>data:首元素地址</p>
 </blockquote>
 <p>数组动态分布<br> </p><pre class="line-numbers language-C" data-language="C"><code class="language-C">typedef struct { 
-  Elem Type *data;  
+  ElemType *data;  
   int length;  
 }SqList;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p></p>
 <blockquote>
@@ -608,7 +608,7 @@ typedef struct {
 </ul>
 <p><code>int *p1 = new int;</code><br>或 <code>int *p1 = new int（10）;</code><br>使用 <code>delete 指针P</code> 释放 </p>
 <h2 id="线性表的顺序表示和实现-1"><a href="#线性表的顺序表示和实现-1" class="headerlink" title="线性表的顺序表示和实现"></a><strong>线性表的顺序表示和实现</strong></h2><p>线性表类型的构造（回顾）：<br> </p><pre class="line-numbers language-C" data-language="C"><code class="language-C">typedef struct { 
-  Elem Type data[MaxSize];  
+  ElemType data[MaxSize];  
   int length;  
 }SqList;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><br>线性表变量L的定义以及成员读取：<br> <pre class="line-numbers language-C" data-language="C"><code class="language-C">SqList L;
 L.elem;
@@ -616,7 +616,7 @@ L.elem;
 SqList *L;
 L-&gt;elem;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>补充：操作算法中用到的预定义常量和类型<br> <img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/10.jpg"> <p></p>
 <h3 id="算法1-线性表的初始化"><a href="#算法1-线性表的初始化" class="headerlink" title="算法1 线性表的初始化"></a><strong>算法1</strong> 线性表的初始化</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">Status InitList_Sq(SqList &amp;L){
-  L.elem=new eLEMType[MAXSIZE];
+  L.elem=new ElemType[MAXSIZE];
   if(!L.elem) exit(OVERFLOW);
   L.length=0; //空表长度为0
   return OK;
@@ -630,7 +630,7 @@ L-&gt;elem;<span aria-hidden="true" class="line-numbers-rows"><span></span><span
  L.Length=0;
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h3 id="算法4-线性表的长度"><a href="#算法4-线性表的长度" class="headerlink" title="算法4 线性表的长度"></a><strong>算法4</strong> 线性表的长度</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">int GetLength(SqList L){
- renturn(L.Length);
+ return(L.Length);
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h3 id="算法5-判断线性表是否为空"><a href="#算法5-判断线性表是否为空" class="headerlink" title="算法5 判断线性表是否为空"></a><strong>算法5</strong> 判断线性表是否为空</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">int IsEmpty(SqList L){
  if(L.Length==0)return 1;
