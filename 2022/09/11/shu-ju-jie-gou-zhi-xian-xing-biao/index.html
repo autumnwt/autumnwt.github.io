@@ -429,14 +429,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.2k
+                    3.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    14 分
                 </div>
                 
 
@@ -869,6 +869,52 @@ void CreateList_H(LinkList &amp;L,int n){
    }
  }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h2 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a><strong>循环链表</strong></h2><p>是一种头尾相接的链表<br><img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/26.jpg"><br>优点：从表中任意结点出发均可找到表中其他结点  </p>
+<blockquote>
+<p>循环列表没有NULL指针，故涉及遍历操作时，其终止条件就不再像非循环链表那样判断<code>p</code>或<code>p-&gt;next </code>是否为空，而是判断他们是否等于头指针  </p>
+</blockquote>
+<p>循环条件:  </p>
+<table>
+<thead>
+<tr>
+<th>单链表</th>
+<th>单循环链表</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>p!=NULL</td>
+<td>p!=L</td>
+</tr>
+<tr>
+<td>P-&gt;next!=NULL</td>
+<td>p-&gt;NEXT!=1</td>
+</tr>
+</tbody></table>
+<p><img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/27.jpg"> </p>
+<blockquote>
+<p>循环链表若经常需要对首尾进行操作，则设置尾指针更为合适  </p>
+</blockquote>
+<h3 id="带尾指针循环链表的合并"><a href="#带尾指针循环链表的合并" class="headerlink" title="带尾指针循环链表的合并"></a><strong>带尾指针循环链表的合并</strong></h3><p><img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/28.jpg"></p>
+<blockquote>
+<p>p存表头结点，Tb表头连接到Ta表尾，释放Tb表头结点，修改指针<br><img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/29.jpg"><br><code>p=Ta-&gt;next;</code><br><code>Ta-&gt;next=Tb-&gt;next-&gt;next;</code><br><code>delete Tb-&gt;next;</code>   </p>
+</blockquote>
+<p>算法描述  </p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">LinkList Connect(LinkList Ta,LinkList Tb){
+   p=Ta-&gt;next;
+   Ta-&gt;next=Tb-&gt;next-&gt;next;
+   delete Tb-&gt;next;
+   Tb-&gt;next=p;
+   return Tb;
+ }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a><strong>双向链表</strong></h2><p> 双向链表的结点结构<br> <img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/30.jpg">   </p>
+<h3 id="双向链表的结构定义"><a href="#双向链表的结构定义" class="headerlink" title="双向链表的结构定义"></a><strong>双向链表的结构定义</strong></h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">typedef struct DuLNode{
+  Elemtype data;
+  struct DuLNode *prior, *next;
+}DuLNode,*DuLinkList;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p> <img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/31.jpg">   </p>
+<h3 id="双向循环链表"><a href="#双向循环链表" class="headerlink" title="双向循环链表"></a><strong>双向循环链表</strong></h3><p>-让头结点的前驱指针指向链表的最后一个结点<br>-让最后一个结点的后继指向头结点<br> <img src="/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/32.jpg"> </p>
 
                 
             </div>
@@ -1266,7 +1312,7 @@ void CreateList_H(LinkList &amp;L,int n){
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">4.6k</span>
+                        class="white-color">4.9k</span>
             
             
             
