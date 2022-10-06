@@ -5,7 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="数据结构之栈和队列, AutumnWt">
-    <meta name="description" content="">
+    <meta name="description" content="数据结构之栈和队列栈和队列的定义栈和队列是两种常用的数据结构，是限定插入和删除只能在表的“端点”进行的线性表  
+
+栈的操作具有后进先出的固有特性如“数值转换”  “表达式求值”  “括号匹配检验”  “八皇后问题”  “函数调用”  “迷">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -364,12 +366,41 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                <span class="chip bg-color">数据结构</span>
+                            </a>
+                        
+                            <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                                <span class="chip bg-color">C语言</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%A0%88/">
+                                <span class="chip bg-color">栈</span>
+                            </a>
+                        
+                            <a href="/tags/%E9%98%9F%E5%88%97/">
+                                <span class="chip bg-color">队列</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                数据结构
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -387,14 +418,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    5 分
                 </div>
                 
 
@@ -412,7 +443,170 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="数据结构之栈和队列"><a href="#数据结构之栈和队列" class="headerlink" title="数据结构之栈和队列"></a>数据结构之栈和队列</h1><h2 id="栈和队列的定义"><a href="#栈和队列的定义" class="headerlink" title="栈和队列的定义"></a><strong>栈和队列的定义</strong></h2><p>栈和队列是两种常用的数据结构，是限定插入和删除只能在表的“端点”进行的线性表  </p>
+<blockquote>
+<p><strong>栈</strong>的操作具有后进先出的固有特性<br>如“数值转换”  “表达式求值”  “括号匹配检验”  “八皇后问题”  “函数调用”  “迷宫求解” 等等  </p>
+</blockquote>
+<blockquote>
+<p><strong>队列</strong>的操作具有先进先出的特性<br>使得队列成为程序设计中解决类似排队问题的工具  </p>
+</blockquote>
+<p><img src="/2022/10/04/shu-ju-jie-gou-zhi-zhan-he-dui-lie/1.jpg">  </p>
+<h2 id="栈的定义和特点"><a href="#栈的定义和特点" class="headerlink" title="栈的定义和特点"></a><strong>栈的定义和特点</strong></h2><p>是一个特殊的线性表，限定仅在一端（通常是表尾）进行插入和删除操作的线性表  </p>
+<p>又称为后进先出，简称LIFO结构  </p>
+<blockquote>
+<p>表尾（即an端）称为栈顶Top；表头（即a1端）称为栈底Base<br><img src="/2022/10/04/shu-ju-jie-gou-zhi-zhan-he-dui-lie/2.jpg"><br>插入元素到栈顶（表尾）的操作称为入栈；<br>从栈顶删除最后一个元素的操作称为出栈<br>压入=<code>PUSH(x)</code>  弹出=<code>POP(y)</code></p>
+</blockquote>
+<p><img src="/2022/10/04/shu-ju-jie-gou-zhi-zhan-he-dui-lie/3.jpg">  </p>
+<h2 id="队列的定义和特点"><a href="#队列的定义和特点" class="headerlink" title="队列的定义和特点"></a><strong>队列的定义和特点</strong></h2><p>在表一端插入（表尾），在另一端（表头）删除<br><img src="/2022/10/04/shu-ju-jie-gou-zhi-zhan-he-dui-lie/4.jpg">  </p>
+<h2 id="案例引入"><a href="#案例引入" class="headerlink" title="案例引入"></a><strong>案例引入</strong></h2><h3 id="案例1-进制转换"><a href="#案例1-进制转换" class="headerlink" title="案例1 进制转换"></a><strong>案例1</strong> 进制转换</h3><p><img src="/2022/10/04/shu-ju-jie-gou-zhi-zhan-he-dui-lie/5.jpg">  </p>
+<h3 id="案例2-括号匹配的检验"><a href="#案例2-括号匹配的检验" class="headerlink" title="案例2 括号匹配的检验"></a><strong>案例2</strong> 括号匹配的检验</h3><p><img src="/2022/10/04/shu-ju-jie-gou-zhi-zhan-he-dui-lie/6.jpg">  </p>
+<h3 id="案例3-表达式求值"><a href="#案例3-表达式求值" class="headerlink" title="案例3 表达式求值"></a><strong>案例3</strong> 表达式求值</h3><p><img src="/2022/10/04/shu-ju-jie-gou-zhi-zhan-he-dui-lie/7.jpg"><br><img src="/2022/10/04/shu-ju-jie-gou-zhi-zhan-he-dui-lie/8.jpg">  </p>
+<h3 id="案例4-舞伴问题"><a href="#案例4-舞伴问题" class="headerlink" title="案例4 舞伴问题"></a><strong>案例4</strong> 舞伴问题</h3><p><img src="/2022/10/04/shu-ju-jie-gou-zhi-zhan-he-dui-lie/9.jpg">  </p>
+<h2 id="栈的抽象数据类型的类型定义"><a href="#栈的抽象数据类型的类型定义" class="headerlink" title="栈的抽象数据类型的类型定义"></a><strong>栈的抽象数据类型的类型定义</strong></h2><pre class="line-numbers language-ADT" data-language="ADT"><code class="language-ADT">ADT Stack {
+    数据对象：
+       D={ai|ai属于ElemSet,i=1,2,3,...n,n&gt;=0}
+    数据关系：
+       R1={&lt;ai-1,ai&gt;|ai-1，ai属于D，i=2，...,n}  
+       约定an端为栈顶，a1端为栈底。  
+    基本操作：初始化、进栈、出栈、取栈顶元素等
+}
+}ADT Stack <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>InitStack(&amp;S)：初始化操作，构造一个空栈S  </li>
+<li>DestoryStack(&amp;S)：销毁栈操作   </li>
+<li>StackEmpty(S)：判断S是否为空栈</li>
+<li>StackLength(L):返回S的元素个数</li>
+<li>GetTop(S,&amp;e):取栈顶元素</li>
+<li>ClearStack(&amp;S):栈置空操作</li>
+<li>Puah(&amp;S,e):插入元素e为新的栈顶元素</li>
+<li>Pop(&amp;S,&amp;e):删除S的栈顶元素，并用e返回其值</li>
+</ul>
+<h2 id="顺序栈的表示和实现"><a href="#顺序栈的表示和实现" class="headerlink" title="顺序栈的表示和实现"></a><strong>顺序栈的表示和实现</strong></h2><p>存储方式：与一般线性表的顺序存储结构完全相同<br>利用一组地址连续的存储单元依次存放自栈底到栈顶的数据元素，栈底一般在低地址端  </p>
+<ul>
+<li>top指针：指示栈顶元素在顺序栈中的位置  </li>
+<li>base指针，指示栈底元素在顺序栈中的位置  <blockquote>
+<p>但是，为了方便操作，通常top指示真正的栈顶元素之上的下表地址<br>另外，用stacksize表示栈可以使用的最大容量<br><img src="/2022/10/04/shu-ju-jie-gou-zhi-zhan-he-dui-lie/10.jpg"></p>
+</blockquote>
+</li>
+</ul>
+<p><img src="/2022/10/04/shu-ju-jie-gou-zhi-zhan-he-dui-lie/11.jpg"></p>
+<p>使用数组作为顺序栈存储方式的特点：  </p>
+<blockquote>
+<p>简单方便单易产生溢出（数组大小固定）  </p>
+</blockquote>
+<p>上溢：栈已经满，又要压入元素<br>下溢：栈已经空，还要弹出元素  </p>
+<blockquote>
+<p>上溢是一种错误，而下溢一般认为是一种结束条件，即问题处理结束  </p>
+</blockquote>
+<h3 id="顺序栈的数据类型定义"><a href="#顺序栈的数据类型定义" class="headerlink" title="顺序栈的数据类型定义"></a><strong>顺序栈的数据类型定义</strong></h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">#define MAXSIZE 100
+typedef struct {
+    SElemType *base;//栈底指针
+    SElemType *top;//栈顶指针
+    int stacksize; //栈可用最大容量
+}SqStack;
+```  
+
+![](./%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/12.jpg)  
+
+### **算法1** 顺序栈的初始化
+ ```C
+Status InitStack(SqStack &amp;S){
+  S.base=new SElemType[MAXSIZE];//或
+  //S.base=(SElemType*)malloc(MAXSIZE*sizeof(SElemType));  
+  if(!S.base)exit (OVERFLOW);
+  S.top=S.base;
+  S.stacksize=MAXSIZE;
+  return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="算法2-顺序栈判断是否是空"><a href="#算法2-顺序栈判断是否是空" class="headerlink" title="算法2 顺序栈判断是否是空"></a><strong>算法2</strong> 顺序栈判断是否是空</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">Status StackEmpty(SqStack S){
+  if(S.top==S.base)return TRUE;
+  else return FALSE;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="算法3-求顺序栈长度"><a href="#算法3-求顺序栈长度" class="headerlink" title="算法3 求顺序栈长度"></a><strong>算法3</strong> 求顺序栈长度</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">Status StackLength(SqStack S){
+  return S.top-S.base；
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="算法4-清空顺序栈"><a href="#算法4-清空顺序栈" class="headerlink" title="算法4 清空顺序栈"></a><strong>算法4</strong> 清空顺序栈</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">Status ClearStack(SqStack S){
+   if(S.base)S.top=S.base;
+   return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="算法5-销毁顺序栈"><a href="#算法5-销毁顺序栈" class="headerlink" title="算法5 销毁顺序栈"></a><strong>算法5</strong> 销毁顺序栈</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">Status DestroyStack(SqStack &amp;S){
+   if(S.base){
+    delete S.base;
+    S.stacksize=0;
+    S.base= S.top =NULL;
+   }
+   return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="算法6-顺序栈的入栈"><a href="#算法6-顺序栈的入栈" class="headerlink" title="算法6 顺序栈的入栈"></a><strong>算法6</strong> 顺序栈的入栈</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">Status Push(SqStack &amp;S,SElemType e){
+   if(S.top-S.base==S.stacksize)//栈满  
+     return ERROR;
+   *S.top++=e;//*S.top=e;S.top++;
+    return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="算法7-顺序栈的出栈"><a href="#算法7-顺序栈的出栈" class="headerlink" title="算法7 顺序栈的出栈"></a><strong>算法7</strong> 顺序栈的出栈</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">Status Pop(SqStack &amp;S,SElemType &amp;e){
+   if(S.top==S.base)//等价于if(StackEmpty(S))
+   return ERROR; 
+   e=*--S.top;//--S.top;e=*S.top;
+   return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="链栈的表示和实现"><a href="#链栈的表示和实现" class="headerlink" title="链栈的表示和实现"></a><strong>链栈的表示和实现</strong></h2><p>链栈是运算受限的单链表，只能在链表头部进行操作 </p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">typedef struct StackNode{
+    SElemType data；
+    struct StackNode *next;
+}StackNode,*LinkStack;  
+
+LinkStack S;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2022/10/04/shu-ju-jie-gou-zhi-zhan-he-dui-lie/13.jpg">  </p>
+<h3 id="算法1-链栈的初始化"><a href="#算法1-链栈的初始化" class="headerlink" title="算法1 链栈的初始化"></a><strong>算法1</strong> 链栈的初始化</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">void InitStack(LinkStack &amp;S){
+    //构造一个空栈，栈顶指针置为空
+    S=NULL;
+    return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="算法2-链栈的初始化"><a href="#算法2-链栈的初始化" class="headerlink" title="算法2 链栈的初始化"></a><strong>算法2</strong> 链栈的初始化</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">void InitStack(LinkStack &amp;S){
+    //构造一个空栈，栈顶指针置为空
+    S=NULL;
+    return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="算法3-判断链栈是否为空"><a href="#算法3-判断链栈是否为空" class="headerlink" title="算法3 判断链栈是否为空"></a><strong>算法3</strong> 判断链栈是否为空</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">void StackEmpty(LinkStack S){
+    if(S==NULL)return TRUE;
+    else return FALSE;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="算法4-链栈的入栈"><a href="#算法4-链栈的入栈" class="headerlink" title="算法4 链栈的入栈"></a><strong>算法4</strong> 链栈的入栈</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">Status Push(LinkStack &amp;S,SElemType e){
+    p=new StackNode;
+    p-&gt;data=e;
+    p-&gt;next=S;
+    S=p;
+    return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="算法5-链栈的出栈"><a href="#算法5-链栈的出栈" class="headerlink" title="算法5 链栈的出栈"></a><strong>算法5</strong> 链栈的出栈</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">Status Pop(LinkStack &amp;S,SElemType &amp;e){
+    if(S==NULL)return ERROR;
+    e=S-&gt;data;
+    p=S;
+    S=S-&gt;next;
+    delete p;
+    return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="算法6-取栈顶元素"><a href="#算法6-取栈顶元素" class="headerlink" title="算法6 取栈顶元素"></a><strong>算法6</strong> 取栈顶元素</h3> <pre class="line-numbers language-C" data-language="C"><code class="language-C">SElemType GetTop(LinkStack S){
+    if(S!=NULL)
+    return S-&gt;data;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="栈和递归"><a href="#栈和递归" class="headerlink" title="栈和递归"></a><strong>栈和递归</strong></h2><p><img src="/2022/10/04/shu-ju-jie-gou-zhi-zhan-he-dui-lie/14.jpg"></p>
+<blockquote>
+<p>注：栈的应用与递归详见数据结构书中P48页始  </p>
+</blockquote>
+
                 
             </div>
             <hr/>
@@ -428,7 +622,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">AutumnWt</a>
+                    <a href="/about" rel="external nofollow noreferrer">autumnwt</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -451,7 +645,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">AutumnWt</a>
+                    <a href="/about" target="_blank">autumnwt</a>
                     !
                 </span>
             </div>
@@ -475,7 +669,27 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                    <span class="chip bg-color">数据结构</span>
+                                </a>
+                            
+                                <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                                    <span class="chip bg-color">C语言</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%A0%88/">
+                                    <span class="chip bg-color">栈</span>
+                                </a>
+                            
+                                <a href="/tags/%E9%98%9F%E5%88%97/">
+                                    <span class="chip bg-color">队列</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -578,13 +792,41 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AutumnWt
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    数据结构
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">数据结构</span>
+                    </a>
+                    
+                    <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">C语言</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A0%88/">
+                        <span class="chip bg-color">栈</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%98%9F%E5%88%97/">
+                        <span class="chip bg-color">队列</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -639,6 +881,10 @@
                     
                     <a href="/tags/%E7%AE%97%E6%B3%95/">
                         <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/">
+                        <span class="chip bg-color">线性表</span>
                     </a>
                     
                 </div>
@@ -781,7 +1027,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">5.3k</span>
+                        class="white-color">6.5k</span>
             
             
             
