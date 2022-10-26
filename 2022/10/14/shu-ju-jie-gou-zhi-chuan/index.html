@@ -5,7 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="数据结构之串, AutumnWt">
-    <meta name="description" content="">
+    <meta name="description" content="数据结构之串串的定义串：内容受限的线性表  
+
+由零个或多个任意字符组成的有限序列  
+
+
+子串：一个串中任意个连续字符组成的子序列主串：包含子串的串相应地称为主串字符位置：字符在序列中的序号子串位置：子串第一个字符空格串：由一个或多个空格">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -364,12 +369,37 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                <span class="chip bg-color">数据结构</span>
+                            </a>
+                        
+                            <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                                <span class="chip bg-color">C语言</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
+                            </a>
+                        
+                            <a href="/tags/%E4%B8%B2/">
+                                <span class="chip bg-color">串</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                数据结构
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -387,14 +417,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    859
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -412,7 +442,113 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="数据结构之串"><a href="#数据结构之串" class="headerlink" title="数据结构之串"></a>数据结构之串</h1><h2 id="串的定义"><a href="#串的定义" class="headerlink" title="串的定义"></a><strong>串的定义</strong></h2><p>串：内容受限的线性表  </p>
+<blockquote>
+<p>由零个或多个任意字符组成的有限序列<br><img src="/2022/10/14/shu-ju-jie-gou-zhi-chuan/1.jpg">  </p>
+</blockquote>
+<blockquote>
+<p>子串：一个串中任意个连续字符组成的子序列<br>主串：包含子串的串相应地称为主串<br>字符位置：字符在序列中的序号<br>子串位置：子串第一个字符<br>空格串：由一个或多个空格组成的串，与空串不同<br>串相等：当且仅当两个串的长度相等并且各个对应的位置上字符都相等（所有空串都相等）</p>
+</blockquote>
+<h2 id="串的类型定义"><a href="#串的类型定义" class="headerlink" title="串的类型定义"></a><strong>串的类型定义</strong></h2><pre class="line-numbers language-ADT" data-language="ADT"><code class="language-ADT">ADT String{
+   数据对象：D={ai|ai属于Characterset，(i=1,2,3...n，n&gt;=0)}  
+
+   数据关系：R={&lt;ai-1，ai&gt;|ai-1，ai属于D，(i=1,2,3...n)}
+
+   基本操作：
+   串赋值
+   穿比较
+   求串长
+   串连结
+   ...
+}ADT String<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>串中元素逻辑关系与线性表相同<br><img src="/2022/10/14/shu-ju-jie-gou-zhi-chuan/2.jpg">  </p>
+</blockquote>
+<h3 id="串的顺序存储结构"><a href="#串的顺序存储结构" class="headerlink" title="串的顺序存储结构"></a><strong>串的顺序存储结构</strong></h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">#define MAXLEN 255   
+typedef struct {
+    char ch[MAXLEN+1];//存储串的一维数组（0号位一般不用）
+    int length; //串的当前长度
+}SString;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="串的链式存储结构-块链结构"><a href="#串的链式存储结构-块链结构" class="headerlink" title="串的链式存储结构-块链结构"></a><strong>串的链式存储结构-块链结构</strong></h3><p><img src="/2022/10/14/shu-ju-jie-gou-zhi-chuan/3.jpg"> </p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">#define CHUNKSIZE 80  //块的大小可由用户定义 
+typedef struct Chunk{
+    char ch[CHUNKSIZE];
+    struct Chunk *next;
+}Chunk;
+
+typedef struct {
+    Chunk *head,*tail;//串的头指针与尾指针
+    int curlen;//串的当前长度
+}LString;  //字符串的块链结构<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="串的模式匹配算法"><a href="#串的模式匹配算法" class="headerlink" title="串的模式匹配算法"></a><strong>串的模式匹配算法</strong></h2><p>算法目的：确定主串中所包含子串（模式串）第一次出现的位置  </p>
+<blockquote>
+<p>算法种类：BF算法、KMP算法  </p>
+</blockquote>
+<h3 id="串的BF算法"><a href="#串的BF算法" class="headerlink" title="串的BF算法"></a><strong>串的BF算法</strong></h3><p><img src="/2022/10/14/shu-ju-jie-gou-zhi-chuan/4.jpg"> </p>
+<blockquote>
+<p>i-j+1是原始位置，再+1是原始位置的下一位置   </p>
+</blockquote>
+<p><img src="/2022/10/14/shu-ju-jie-gou-zhi-chuan/5.jpg"><br><img src="/2022/10/14/shu-ju-jie-gou-zhi-chuan/6.jpg"><br><img src="/2022/10/14/shu-ju-jie-gou-zhi-chuan/7.jpg"></p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">//从主串的头部开始找
+int Index_BF(SString S,SString T){
+    int i=1,j=1;
+    while(i&lt;=S.length&amp;&amp;j&lt;=T.length){
+        if(S.ch[i]==T.ch[j]){++i;++j;}//主串和子串依次匹配下一个字符  
+        else {i=i-j+2;j=1;}//主串、子串指针回溯重新开始下一次匹配  
+        if(j&gt;T.length)return i-T.length;//返回匹配的第一个字符的下标  
+        else return 0；//匹配不成功
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">//从主串的中间pos处开始找
+int Index_BF(SString S,SString T，int pos){
+    int i=pos,j=1;
+    while(i&lt;=S.length&amp;&amp;j&lt;=T.length){
+        if(S.ch[i]==T.ch[j]){++i;++j;}//主串和子串依次匹配下一个字符  
+        else {i=i-j+2;j=1;}//主串、子串指针回溯重新开始下一次匹配  
+        if(j&gt;T.length)return i-T.length;//返回匹配的第一个字符的下标  
+        else return 0；//匹配不成功
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="串的KMP算法"><a href="#串的KMP算法" class="headerlink" title="串的KMP算法"></a><strong>串的KMP算法</strong></h3><p><img src="/2022/10/14/shu-ju-jie-gou-zhi-chuan/8.jpg"><br><img src="/2022/10/14/shu-ju-jie-gou-zhi-chuan/9.jpg"><br><img src="/2022/10/14/shu-ju-jie-gou-zhi-chuan/10.jpg"></p>
+<blockquote>
+<p>计算next[j]=k；k-1=5（如上图，则k=6）</p>
+</blockquote>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">void get_next(SString T,int &amp;next[]){
+     i=1;next[1]=0;j=0;
+     while(i&lt;T.length){
+        if(j==0||T.ch[i]==T.ch[j]){
+            ++i;++j;
+            next[i]=j;
+        }
+        else j=next[j];
+     }
+}
+
+//从主串的中间pos处开始找
+int Index_KMP(SString S,SString T，int pos){
+    int i=pos,j=1;
+    while(i&lt;=S.length&amp;&amp;j&lt;=T.length){
+        if(j==0||S.ch[i]==T.ch[j]){++i;++j;}//主串和子串依次匹配下一个字符  
+        else {
+            j=next[j]; //i不变，j后退 
+        }
+        if(j&gt;T.length)return i-T.length;//返回匹配的第一个字符的下标  
+        else return 0；//匹配不成功
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>主串S的指针i不必回溯，O(m+n)</p>
+</blockquote>
+<p>next数组细说<br><img src="/2022/10/14/shu-ju-jie-gou-zhi-chuan/11.jpg"><br><img src="/2022/10/14/shu-ju-jie-gou-zhi-chuan/12.jpg"><br><img src="/2022/10/14/shu-ju-jie-gou-zhi-chuan/13.jpg"></p>
+<blockquote>
+<p>看门牌，比如：如果要求7的next，看6的next值，是4，所以看第4，如果4和6相等，那么7就为4+1=5，但是并不等，于是看2,2和6也不等，就看1，1和6也不等，于是7就为1</p>
+</blockquote>
+
                 
             </div>
             <hr/>
@@ -428,7 +564,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">AutumnWt</a>
+                    <a href="/about" rel="external nofollow noreferrer">autumnwt</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -451,7 +587,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">AutumnWt</a>
+                    <a href="/about" target="_blank">autumnwt</a>
                     !
                 </span>
             </div>
@@ -475,7 +611,23 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                    <span class="chip bg-color">数据结构</span>
+                                </a>
+                            
+                                <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                                    <span class="chip bg-color">C语言</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
+                                </a>
+                            
+                                <a href="/tags/%E4%B8%B2/">
+                                    <span class="chip bg-color">串</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -578,13 +730,37 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AutumnWt
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    数据结构
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">数据结构</span>
+                    </a>
+                    
+                    <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">C语言</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%B8%B2/">
+                        <span class="chip bg-color">串</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -789,7 +965,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">7.3k</span>
+                        class="white-color">8.1k</span>
             
             
             
