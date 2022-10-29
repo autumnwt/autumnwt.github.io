@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>数据结构之数组和广义表</title>
+      <link href="/2022/10/26/shu-ju-jie-gou-zhi-shu-zu-he-guang-yi-biao/"/>
+      <url>/2022/10/26/shu-ju-jie-gou-zhi-shu-zu-he-guang-yi-biao/</url>
+      
+        <content type="html"><![CDATA[<h1 id="数据结构之数组和广义表"><a href="#数据结构之数组和广义表" class="headerlink" title="数据结构之数组和广义表"></a>数据结构之数组和广义表</h1><h2 id="数组的定义及特点"><a href="#数组的定义及特点" class="headerlink" title="数组的定义及特点"></a>数组的定义及特点</h2><blockquote><p>按一定格式排列起来的<br>具有相同类型的数据元素的集合  </p></blockquote><blockquote><p>数组特点：结构固定：定义后，维数和维界不再改变  </p></blockquote><blockquote><p>数组基本操作：除了结构的初始化和销毁之外，只有取元素和修改元素值的操作  </p></blockquote><h2 id="数组的抽象数据类型定义"><a href="#数组的抽象数据类型定义" class="headerlink" title="数组的抽象数据类型定义"></a>数组的抽象数据类型定义</h2><p>n维数组的抽象数据类型  </p><pre class="line-numbers language-ADT" data-language="ADT"><code class="language-ADT">ADT Array{   数据对象：   ji=0,bi-1, i=1,2,3...n   D={aj1j2j3..jn|aj1j2j3..jn属于Elemset}     数据关系   基本操作：   构造数组   销毁数组   取数组元素值   给数组元素赋值   ...}ADT Array<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="数组的顺序存储"><a href="#数组的顺序存储" class="headerlink" title="数组的顺序存储"></a>数组的顺序存储</h2><blockquote><p>一维数组<br><img src="/2022/10/26/shu-ju-jie-gou-zhi-shu-zu-he-guang-yi-biao/1.jpg">  </p></blockquote><blockquote><p>二维数组<br><img src="/2022/10/26/shu-ju-jie-gou-zhi-shu-zu-he-guang-yi-biao/2.jpg"><br>存储单元是一维结构，而数组是个多维结构，则用一组连续存储单元存放数组的元素就有次序问题<br><img src="/2022/10/26/shu-ju-jie-gou-zhi-shu-zu-he-guang-yi-biao/3.jpg"><br><img src="/2022/10/26/shu-ju-jie-gou-zhi-shu-zu-he-guang-yi-biao/4.jpg"> </p></blockquote><blockquote><p>三维数组<br><img src="/2022/10/26/shu-ju-jie-gou-zhi-shu-zu-he-guang-yi-biao/5.jpg">  </p></blockquote><h2 id="特殊矩阵的压缩存储"><a href="#特殊矩阵的压缩存储" class="headerlink" title="特殊矩阵的压缩存储"></a>特殊矩阵的压缩存储</h2><p>矩阵：一个由m*n个元素排成的m行n列的表<br><img src="/2022/10/26/shu-ju-jie-gou-zhi-shu-zu-he-guang-yi-biao/6.jpg"><br><img src="/2022/10/26/shu-ju-jie-gou-zhi-shu-zu-he-guang-yi-biao/7.jpg">  </p><p>1.对称矩阵：<br>可以只存储上半部分或下半部分，对于一个n*n矩阵，只需要存储n(n+1)/2个元素空间  </p><blockquote><p><img src="/2022/10/26/shu-ju-jie-gou-zhi-shu-zu-he-guang-yi-biao/8.jpg">  </p></blockquote><p>2.三角矩阵  </p><blockquote><p><img src="/2022/10/26/shu-ju-jie-gou-zhi-shu-zu-he-guang-yi-biao/9.jpg">  </p></blockquote><p>3.对角矩阵  </p><blockquote><p><img src="/2022/10/26/shu-ju-jie-gou-zhi-shu-zu-he-guang-yi-biao/10.jpg"><br>以对角线的顺序存储<br><img src="/2022/10/26/shu-ju-jie-gou-zhi-shu-zu-he-guang-yi-biao/11.jpg">  </p></blockquote><h2 id="稀疏矩阵存储"><a href="#稀疏矩阵存储" class="headerlink" title="稀疏矩阵存储"></a>稀疏矩阵存储</h2><p><img src="/2022/10/26/shu-ju-jie-gou-zhi-shu-zu-he-guang-yi-biao/12.jpg"><br>顺序存储结构：三元组法<br><img src="/2022/10/26/shu-ju-jie-gou-zhi-shu-zu-he-guang-yi-biao/13.jpg"><br><img src="/2022/10/26/shu-ju-jie-gou-zhi-shu-zu-he-guang-yi-biao/14.jpg"><br>链式存储结构：十字链表<br><img src="/2022/10/26/shu-ju-jie-gou-zhi-shu-zu-he-guang-yi-biao/15.jpg"><br>例如：<br><img src="/2022/10/26/shu-ju-jie-gou-zhi-shu-zu-he-guang-yi-biao/16.jpg">  </p><h2 id="广义表"><a href="#广义表" class="headerlink" title="广义表"></a>广义表</h2><p>线性表的推广，其中每一个元素可以是原子或者一个广义表<br><img src="/2022/10/26/shu-ju-jie-gou-zhi-shu-zu-he-guang-yi-biao/17.jpg"><br><img src="/2022/10/26/shu-ju-jie-gou-zhi-shu-zu-he-guang-yi-biao/18.jpg">  </p><h2 id="广义表的性质"><a href="#广义表的性质" class="headerlink" title="广义表的性质"></a>广义表的性质</h2><p>1.广义表中的数据元素有相对次序，一个直接前驱和一个直接后继<br>2.广义表的长度定义为最外层所包含元素的个数，如：C=(a,(b,c))是长度为2的广义表<br>3.广义表的深度定义为该广义表展开后所含括号的重数<br>4.广义表可以为其他广义表共享；如：广义表B就共享表A，在B中不必列出A的值，而是通过名称来引用，B=(A)<br>5.广义表可以是一个递归的表。如：F=(a,F)=(a,(a,(a,…)))<br>注意：递归表的深度是无穷值，长度是有限值<br>6.广义表是对层次结构，广义表的元素可以是氮元素，也可以是子表，而子表的元素还可以是子表<br><img src="/2022/10/26/shu-ju-jie-gou-zhi-shu-zu-he-guang-yi-biao/19.jpg">  </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> C语言 </tag>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 数组 </tag>
+            
+            <tag> 广义表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据结构之串</title>
       <link href="/2022/10/14/shu-ju-jie-gou-zhi-chuan/"/>
       <url>/2022/10/14/shu-ju-jie-gou-zhi-chuan/</url>
