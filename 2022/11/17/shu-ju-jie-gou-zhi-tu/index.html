@@ -415,14 +415,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    953
+                    2.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    9 分
                 </div>
                 
 
@@ -497,8 +497,141 @@ typedef struct {
     return -1;
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h4 id="邻接矩阵的优缺"><a href="#邻接矩阵的优缺" class="headerlink" title="邻接矩阵的优缺"></a><strong>邻接矩阵的优缺</strong></h4><blockquote>
+<p>优点：<img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/14.jpg">  </p>
+</blockquote>
+<blockquote>
+<p>缺点：<img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/15.jpg">  </p>
+</blockquote>
+<h3 id="邻接表表示法-链式"><a href="#邻接表表示法-链式" class="headerlink" title="邻接表表示法(链式)"></a><strong>邻接表表示法(链式)</strong></h3><p><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/16.jpg">  </p>
+<p>无向图：<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/17.jpg"><br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/18.jpg"></p>
+<p>有向图：<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/19.jpg"><br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/20.jpg">  </p>
+<h4 id="邻接表的存储表示"><a href="#邻接表的存储表示" class="headerlink" title="邻接表的存储表示"></a><strong>邻接表的存储表示</strong></h4><p>顶点的结点结构</p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">typedef struct VNode{
+    VerTexType data;//顶点信息
+    ArcNode *firstarcs; //指向第一条依附该顶点的边的指针
+}VNode,AdjList[MVNum];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>例如AdjList v;相当于：VNode v[MVNum];  </p>
+</blockquote>
+<p>边结点结构  </p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">#define MVNum 100//最大顶点数
+typedef struct ArcNode{
+    //边结点
+    int adjvex//该边所指向的顶点位置
+    struct ArcNode *nextarc;//指向下条边的指针
+    OtherInfo info; //和边相关的信息
+}ArcNode;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>图的结构定义</p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">typedef struct {
+    AdjList vertices;//vertices--vertex的复数
+    int vexnum,arcnum;//图的当前顶点数和弧数
+}ALGraph;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 
+<p>邻接表操作举例说明：<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/21.jpg"><br>采用邻接表表示法创建无向图  </p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">Status CreateUDG(ALGraph &amp;G) {
+    //采用邻接表表示法，创建无向图G
+    cin&gt;&gt;G.vexnum&gt;&gt;G.arcnum;
+    for(i=0;i&lt;G.vexnum;++i){
+        cin&gt;&gt;G.vertices[i].data;
+        G.vertices[i].firstarc=NULL;
+    }
+    for(k=0;k&lt;G.arcnum;++k){
+        cin&gt;&gt;v1&gt;&gt;v2;
+        i=LocateVex(G,v1);
+        j=LocateVex(G,v2);
+        p1=new ArcNode;
+        p1-&gt;adjvex=j;
+        p1-&gt;nexrarc=G.vertices[i].firstarc;
+        G.vertices[i].firstarc=p1;
+        p2=new ArcNode;
+        p2-&gt;adjvex=i;
+        p2-&gt;nexrarc=G.vertices[j].firstarc;
+        G.vertices[j].firstarc=p2;
+    }
+    return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="邻接表的优缺"><a href="#邻接表的优缺" class="headerlink" title="邻接表的优缺"></a><strong>邻接表的优缺</strong></h4><p><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/22.jpg"><br>邻接矩阵与邻接表的关系<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/23.jpg"><br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/24.jpg"><br>可供选择的其他存储结构<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/25.jpg"></p>
+<h3 id="十字链表"><a href="#十字链表" class="headerlink" title="十字链表"></a><strong>十字链表</strong></h3><p><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/26.jpg">  </p>
+<blockquote>
+<p>顶点结点：<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/27.jpg"><br>firstin:第一条入弧<br>firstout:第一条出弧</p>
+</blockquote>
+<blockquote>
+<p>弧结点：<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/28.jpg"><br>tailvex:弧尾位置<br>headvex:弧头位置<br>hlink:弧头相同的下一条弧<br>tlink:弧尾相同的下一条弧</p>
+</blockquote>
+<p><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/29.jpg"></p>
+<h3 id="邻接多重表"><a href="#邻接多重表" class="headerlink" title="邻接多重表"></a><strong>邻接多重表</strong></h3><p><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/30.jpg"></p>
+<h2 id="图的遍历-深度优先"><a href="#图的遍历-深度优先" class="headerlink" title="图的遍历-深度优先"></a><strong>图的遍历-深度优先</strong></h2><p>定义：从已给的连通图中某一顶点出发，沿着一些边访遍图中的所有顶点，且使每个顶点仅被访问一次    </p>
+<p>遍历实质：找到邻接点  </p>
+<blockquote>
+<p>图的特点：<br> 图中可能存在回路，且图的任一顶点都可能与其他顶点相通，在访问完某个顶点之后可能会沿着某些边又回到曾经访问过的顶点，如何避免？  </p>
+</blockquote>
+<p><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/31.jpg"><br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/32.jpg"></p>
+<h3 id="邻接矩阵表示的无向图深度遍历实现"><a href="#邻接矩阵表示的无向图深度遍历实现" class="headerlink" title="邻接矩阵表示的无向图深度遍历实现"></a><strong>邻接矩阵表示的无向图深度遍历实现</strong></h3><p><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/33.jpg">  </p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">void DFS(AMGraph G,int v){
+    //图G为邻接矩阵类型
+    cout&lt;&lt;v;
+    visited[v]=true;//访问第v个顶点
+    for(w=0;w&lt;G.vexnum;w++)//依次检查邻接矩阵v所在的行
+    if((G.arcs[v][w]!=0)&amp;&amp;(!visited[w]))DFS(G,w);
+    //w是v的邻接点，如果w未访问，则递归调用DFS
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="深度遍历效率"><a href="#深度遍历效率" class="headerlink" title="深度遍历效率"></a><strong>深度遍历效率</strong></h3><p><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/34.jpg">  </p>
+<h3 id="非连通图的深度优先遍历"><a href="#非连通图的深度优先遍历" class="headerlink" title="非连通图的深度优先遍历"></a><strong>非连通图的深度优先遍历</strong></h3><p><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/35.jpg">  </p>
+<h2 id="图的遍历-广度优先"><a href="#图的遍历-广度优先" class="headerlink" title="图的遍历-广度优先"></a><strong>图的遍历-广度优先</strong></h2><p><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/36.jpg">  </p>
+<h3 id="邻接表表示的无向图广度遍历实现"><a href="#邻接表表示的无向图广度遍历实现" class="headerlink" title="邻接表表示的无向图广度遍历实现"></a><strong>邻接表表示的无向图广度遍历实现</strong></h3><p>利用队列实现<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/37.jpg"><br>F：队头指针  R：队尾指针  </p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">void BFS(Graph G,int v){
+    //按广度优先非递归遍历图G
+    cout&lt;&lt;v;
+    visited[v]=true;//访问第v个顶点
+    InitQueue(Q);//辅助队列Q初始化，置空  
+    EnQueue(Q,v);//v进队  
+    while(!QueueEmpty(Q)){//队列非空
+        DeQueue(Q,u);//队头元素出队并置为u
+        for(w=FirstAdjVex(G,u);w&gt;=0;w=NextAdjVex(G,u,w))
+        if(!visited[w]){
+            //w为u的尚未访问的邻接顶点
+            cout&lt;&lt;w;visited[w]=true;
+            EnQueue(Q,w);//w进队
+        }
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="广度遍历与深度遍历的比较"><a href="#广度遍历与深度遍历的比较" class="headerlink" title="广度遍历与深度遍历的比较"></a><strong>广度遍历与深度遍历的比较</strong></h2><p><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/38.jpg">  </p>
+<h2 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a><strong>最小生成树</strong></h2><blockquote>
+<p>回顾：生成树：所有顶点均由边连接在一起，但是不存在回路的图<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/39.jpg"><br>·一个图可以有许多棵不同的生成树<br>·所有生成树具有以下共同特点：<br>1.生成树的顶点个数与图的顶点个数相同<br>2.生成树是图的极小连通子图<br>3.在生成树中再加一条边必然形成回路<br>4.生成树中任意两个顶点间的路径是唯一的  </p>
+</blockquote>
+<h3 id="无向图的生成树"><a href="#无向图的生成树" class="headerlink" title="无向图的生成树"></a><strong>无向图的生成树</strong></h3><p>利用优先遍历即可  </p>
+<blockquote>
+<p>深度优先遍历形成的生成树<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/40.jpg"></p>
+</blockquote>
+<blockquote>
+<p>广度优先遍历形成的生成树<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/41.jpg"></p>
+</blockquote>
+<p><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/42.jpg"></p>
+<h3 id="最小生成树的定义"><a href="#最小生成树的定义" class="headerlink" title="最小生成树的定义"></a><strong>最小生成树的定义</strong></h3><p>给定一个无向网络，在该网的所有生成树中，使得各边权值之和最小的那颗生成树称为最小生成树  </p>
+<h3 id="构造最小生成树"><a href="#构造最小生成树" class="headerlink" title="构造最小生成树"></a><strong>构造最小生成树</strong></h3><blockquote>
+<p>MST性质（一种贪心算法）：设N=(V,E)是一个连通网，U是顶点集V的一个非空子集。若边(u，v)是一条具有最小权值的边，其中u属于U，v属于V-U，则必存在一棵包含边(u，v)的最小生成树。<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/43.jpg"><br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/44.jpg">  </p>
+</blockquote>
+<h3 id="构造最小生成树方法1-Prime算法"><a href="#构造最小生成树方法1-Prime算法" class="headerlink" title="构造最小生成树方法1-Prime算法"></a><strong>构造最小生成树方法1-Prime算法</strong></h3><p>算法思想：  不断扩大最小生成树的范围<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/45.jpg">  </p>
+<h3 id="构造最小生成树方法2-Kruskal算法"><a href="#构造最小生成树方法2-Kruskal算法" class="headerlink" title="构造最小生成树方法2-Kruskal算法"></a><strong>构造最小生成树方法2-Kruskal算法</strong></h3><p>算法思想：直接选当前最小的边<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/46.jpg">  </p>
+<p>注：最小生成树可能不唯一  </p>
+<h3 id="两种算法的比较"><a href="#两种算法的比较" class="headerlink" title="两种算法的比较"></a><strong>两种算法的比较</strong></h3><p><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/47.jpg">  </p>
+<h2 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a><strong>最短路径</strong></h2><p>顶点：表示地点<br>弧：表示两地连通<br>弧上的权值：表示距离或花费等等<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/48.jpg">  </p>
+<h3 id="第一类问题：两点间的最短路径"><a href="#第一类问题：两点间的最短路径" class="headerlink" title="第一类问题：两点间的最短路径"></a><strong>第一类问题：两点间的最短路径</strong></h3><p>所有顶点间的最短路径-弗洛伊德算法<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/49.jpg">  </p>
+<h3 id="第二类问题：某源点到其他各点最短路径"><a href="#第二类问题：某源点到其他各点最短路径" class="headerlink" title="第二类问题：某源点到其他各点最短路径"></a><strong>第二类问题：某源点到其他各点最短路径</strong></h3><p>单源最短路径-迪杰斯特拉算法<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/50.jpg">  </p>
+<h3 id="单源最短路径-迪杰斯特拉算法"><a href="#单源最短路径-迪杰斯特拉算法" class="headerlink" title="单源最短路径-迪杰斯特拉算法"></a><strong>单源最短路径-迪杰斯特拉算法</strong></h3><p><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/51.jpg"><br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/52.jpg"><br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/53.jpg">  </p>
+<h3 id="所有顶点间的最短路径-弗洛伊德算法"><a href="#所有顶点间的最短路径-弗洛伊德算法" class="headerlink" title="所有顶点间的最短路径-弗洛伊德算法"></a><strong>所有顶点间的最短路径-弗洛伊德算法</strong></h3><p><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/54.jpg">  </p>
+<h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a><strong>拓扑排序</strong></h2><p>有向无环图：<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/55.jpg"><br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/56.jpg">  </p>
+<h3 id="拓扑排序例子"><a href="#拓扑排序例子" class="headerlink" title="拓扑排序例子"></a><strong>拓扑排序例子</strong></h3><p><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/57.jpg"><br>AOV网的特点：<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/58.jpg">  </p>
+<h3 id="拓扑排序定义"><a href="#拓扑排序定义" class="headerlink" title="拓扑排序定义"></a><strong>拓扑排序定义</strong></h3><p><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/59.jpg">  </p>
+<h3 id="拓扑排序方法"><a href="#拓扑排序方法" class="headerlink" title="拓扑排序方法"></a><strong>拓扑排序方法</strong></h3><p>简言之：一直选择没有前驱的点<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/60.jpg">  </p>
+<p>检测AOV网中是否存在环的方法<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/61.jpg">  </p>
+<h2 id="关键路径"><a href="#关键路径" class="headerlink" title="关键路径"></a><strong>关键路径</strong></h2><p>例：<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/62.jpg"><br>把工程计划表示为边表示活动的网络，即AOE网，用顶点表示事件，弧表示活动，弧的权表示活动持续的时间<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/63.jpg">  </p>
+<p>关键路径：路径长度最长的路径<br>路径长度：路径上各活动持续时间之和<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/64.jpg">  </p>
+<p><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/65.jpg">  </p>
+<p><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/66.jpg">  </p>
+<p>求关键路径步骤：<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/67.jpg"><br>时间余量为0即为关键活动<br><img src="/2022/11/17/shu-ju-jie-gou-zhi-tu/68.jpg">  </p>
 
                 
             </div>
@@ -916,7 +1049,7 @@ typedef struct {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">10.5k</span>
+                        class="white-color">11.9k</span>
             
             
             
