@@ -58,9 +58,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="AutumnWt" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="AutumnWt" type="application/atom+xml">
 </head>
 
 
@@ -422,14 +422,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    818
+                    2.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    8 分
                 </div>
                 
 
@@ -493,6 +493,202 @@
 <blockquote>
 <p>性质3：对任何一棵二叉树T，如果其叶子数为n0，度为2的结点数为n2，则n0=n2+1  </p>
 </blockquote>
+<blockquote>
+<p>满二叉树：一棵深度为k且有2的k次方-1个结点的二叉树称为满二叉树<br>特点：<br><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/16.jpg"> </p>
+</blockquote>
+<blockquote>
+<p>完全二叉树<br>深度为k的具有n个结点的二叉树，当且仅当每一个结点都与深度为k的满二叉树中 的编号为1~n的结点一一对应时，称之为完全二叉数<br><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/17.jpg"><br><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/18.jpg">  </p>
+</blockquote>
+<h3 id="完全二叉树的性质"><a href="#完全二叉树的性质" class="headerlink" title="完全二叉树的性质"></a><strong>完全二叉树的性质</strong></h3><blockquote>
+<p>性质4：具有n个结点的完全二叉树的深度为<img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/19.jpg">  </p>
+</blockquote>
+<blockquote>
+<p>性质5：<img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/20.jpg">  </p>
+</blockquote>
+<h3 id="二叉树的顺序存储结构"><a href="#二叉树的顺序存储结构" class="headerlink" title="二叉树的顺序存储结构"></a><strong>二叉树的顺序存储结构</strong></h3><p>实现：按满二叉树的节点层次编号，依次存放二叉树中的数据元素  </p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">//二叉树顺序存储表示
+#define MAXSIZE 100
+typedef TElemType SqBiTree[MAXSIZE];
+SqBiTree bt;//定义名为bt的数组<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/21.jpg">    </p>
+<p>二叉树的顺序储存缺点：<br><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/22.jpg"><br>浪费空间，适用于满二叉树和完全二叉树  </p>
+<h3 id="二叉树的链式存储结构"><a href="#二叉树的链式存储结构" class="headerlink" title="二叉树的链式存储结构"></a><strong>二叉树的链式存储结构</strong></h3><p>二叉链表表示法<br><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/23.jpg">    </p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">typedef struct BiNode{
+  TElemType data;
+  struct BiNode *lchild,*rchild;//左右孩子指针
+}BiNode,*BiTree;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/24.jpg">   </p>
+<blockquote>
+<p>在n个结点的二叉链中，有n+1个空指针域<br><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/25.jpg">   </p>
+</blockquote>
+<p>三叉链表表示法</p>
+<blockquote>
+<p>如果我们经常需要找前趋<br><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/26.jpg">   </p>
+</blockquote>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">typedef struct TriTNode{
+  TElemType data;
+  struct TriTNode *lchild,*rchild,*parent;//左右孩子指针
+}TriTNode,*TriTree;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="遍历二叉树"><a href="#遍历二叉树" class="headerlink" title="遍历二叉树"></a><strong>遍历二叉树</strong></h2><p>顺着某一条搜索路径寻访二叉树中的结点，使得每个结点均被访问过依次，且仅被访问一次<br>遍历目的：得到树中所有结点的一个线性排列，是树结构插入、删除、修改、查找和排序的前提  </p>
+<p>遍历方法<br><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/27.jpg">   </p>
+<blockquote>
+<p>DLR：先序遍历<br>LDR：中序遍历<br>LRD：后序遍历  </p>
+</blockquote>
+<h3 id="先序遍历二叉树"><a href="#先序遍历二叉树" class="headerlink" title="先序遍历二叉树"></a><strong>先序遍历二叉树</strong></h3><p><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/28.jpg">      </p>
+<h3 id="中序遍历二叉树"><a href="#中序遍历二叉树" class="headerlink" title="中序遍历二叉树"></a><strong>中序遍历二叉树</strong></h3><p><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/29.jpg">      </p>
+<h3 id="后序遍历二叉树"><a href="#后序遍历二叉树" class="headerlink" title="后序遍历二叉树"></a><strong>后序遍历二叉树</strong></h3><p><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/30.jpg">    </p>
+<blockquote>
+<p>由二叉树的先序序列和中序序列、或由二叉树的后序序列和中序序列可以确定唯一一棵二叉树  </p>
+</blockquote>
+<p>例：已知先序和中序序列求二叉树<br><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/31.jpg"><br><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/32.jpg"><br><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/33.jpg">   </p>
+<h3 id="先序遍历二叉树-递归算法"><a href="#先序遍历二叉树-递归算法" class="headerlink" title="先序遍历二叉树-递归算法"></a><strong>先序遍历二叉树-递归算法</strong></h3><p><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/34.jpg">   </p>
+<pre class="line-numbers language-none"><code class="language-none">Status PreOrderTraverse(BiTree T){
+  if(T==NULL)return OK;
+  else{
+    visit(T);//访问根结点
+    PreOrderTraverse(T-&gt;lchild);//递归遍历左子树
+    PreOrderTraverse(T-&gt;rchild);//递归遍历右子树
+  }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="中序遍历二叉树-递归算法"><a href="#中序遍历二叉树-递归算法" class="headerlink" title="中序遍历二叉树-递归算法"></a><strong>中序遍历二叉树-递归算法</strong></h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">Status InOrderTraverse(BiTree T){
+  if(T==NULL)return OK;
+  else{
+    InOrderTraverse(T-&gt;lchild);//递归遍历左子树
+    visit(T);//访问根结点
+    InOrderTraverse(T-&gt;rchild);//递归遍历右子树
+  }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="后序遍历二叉树-递归算法"><a href="#后序遍历二叉树-递归算法" class="headerlink" title="后序遍历二叉树-递归算法"></a><strong>后序遍历二叉树-递归算法</strong></h3><pre class="line-numbers language-C" data-language="C"><code class="language-C">Status PostOrderTraverse(BiTree T){
+  if(T==NULL)return OK;
+  else{
+    PostOrderTraverse(T-&gt;lchild);//递归遍历左子树
+    PostOrderTraverse(T-&gt;rchild);//递归遍历右子树
+    visit(T);//访问根结点
+  }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>遍历算法时间复杂度O(n)<br>遍历算法空间复杂度O(n)  </p>
+</blockquote>
+<h3 id="中序遍历二叉树-非递归算法"><a href="#中序遍历二叉树-非递归算法" class="headerlink" title="中序遍历二叉树-非递归算法"></a><strong>中序遍历二叉树-非递归算法</strong></h3><p>二叉树中序遍历的非递归算法的关键：在中序遍历过某结点的整个左子树后，如何找到该节点的根与右子树  </p>
+<blockquote>
+<p>基本思想：<br>(1)建立一个栈<br>(2)根结点进栈，遍历左子树<br>(3)根结点出栈，输出根结点，遍历右子树<br><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/35.jpg">  </p>
+</blockquote>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">Status InOrderTraverse(BiTree T){
+  BiTree p; InitStack(S);
+  p=T;
+  while(p||!StackEmpty(S)){
+    if(p){
+      Push(S,p);
+      p=p-&gt;lchild;
+    }
+    else{
+      Pop(S,q);
+      printf("%c",q-&gt;data);
+      p=q-&gt;rchild;
+    }
+  }
+  return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="二叉树的层次遍历算法"><a href="#二叉树的层次遍历算法" class="headerlink" title="二叉树的层次遍历算法"></a><strong>二叉树的层次遍历算法</strong></h3><p><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/36.jpg">  </p>
+<blockquote>
+<p>算法思路：<br> 1.将根结点进队；<br> 2.队不空时循环：从队列中出列一个结点*p,访问它；若它有左孩子结点，将左孩子结点进队，若它有右孩子结点，将右孩子结点进队  </p>
+</blockquote>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">//使用队列类型的定义如下
+typedef struct{
+  BTNode data[MaxSize];//存放队中元素
+  int front,rear;//队头和队尾指针
+}SqQueue;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">//二叉树层次遍历算法
+void LevelOrder(BTNode *b){
+  BTNode *p; SqQueue *qu;
+  InitQueue(qu);//初始化队列  
+  enQueue(qu,b);//根结点指针进入队列
+  while(!QueueEmpty(qu)){//队不为空，则循环  
+  deQueue(qu,p);//出队结点p
+  printf("%c",p-&gt;data);//访问结点p
+  if(p-&gt;lchild!=NULL)enQueue(qu,p-&gt;lchild);//有左孩子时将其进队
+  if(p-&gt;rchild!=NULL)enQueue(qu,p-&gt;rchild);//有右孩子时将其进队
+  }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="二叉树的建立-遍历算法的应用"><a href="#二叉树的建立-遍历算法的应用" class="headerlink" title="二叉树的建立-遍历算法的应用"></a><strong>二叉树的建立-遍历算法的应用</strong></h3><p><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/37.jpg">  </p>
+<p><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/38.jpg">  </p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">Status CreateBiTree(BiTree &amp;T){
+  scanf(&amp;ch);
+  if(ch=="#")T=NULL;
+  else{
+    if(!(T=(BiTNode*)malloc(sizeof(BiTNode))))exit(OVERFLOW);
+    T-&gt;data=ch;//生成根结点  
+    CreateBiTree(T-&gt;lchild);//构造左子树
+    CreateBiTree(T-&gt;rchild);//构造右子树
+  }
+  return OK;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="复制二叉树-遍历算法的应用"><a href="#复制二叉树-遍历算法的应用" class="headerlink" title="复制二叉树-遍历算法的应用"></a><strong>复制二叉树-遍历算法的应用</strong></h3><blockquote>
+<p>如果是空树，递归结束<br>否则，申请新结点空间，复制根结点<br>递归复制左子树<br>递归复制右子树</p>
+</blockquote>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">int Copy(BiTree T,BiTree &amp;NewT){
+  if(T==NULL){
+    NewT=NULL;
+    return 0;
+  }
+  else {
+    NewT=new BiTNode;
+    NewT-&gt;data=T-&gt;data;
+    Copy(T-&gt;lChild,NewT-&gt;lchild);
+    Copy(T-&gt;rChild,NewT-&gt;rchild);
+  }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="计算二叉树深度-遍历算法的应用"><a href="#计算二叉树深度-遍历算法的应用" class="headerlink" title="计算二叉树深度-遍历算法的应用"></a><strong>计算二叉树深度-遍历算法的应用</strong></h3><p><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/39.jpg">  </p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">int Depth(BiTree T){
+  if(T==NULL){
+    return 0;
+  }
+  else {
+    m=Depth(T-&gt;lChild);
+    n=Depth(T-&gt;rChild);
+    if(m&gt;n)return(m+1);
+    else return (n+1);
+  }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="计算二叉树节点总数-遍历算法的应用"><a href="#计算二叉树节点总数-遍历算法的应用" class="headerlink" title="计算二叉树节点总数-遍历算法的应用"></a><strong>计算二叉树节点总数-遍历算法的应用</strong></h3><p><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/40.jpg">  </p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">int NodeCount(BiTree T){
+  if(T==NULL){
+    return 0;
+  }
+  else 
+  return NodeCount(T-&gt;lchild)+NodeCount(T-&gt;rchild)+1;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="计算二叉树叶子节点总数-遍历算法的应用"><a href="#计算二叉树叶子节点总数-遍历算法的应用" class="headerlink" title="计算二叉树叶子节点总数-遍历算法的应用"></a><strong>计算二叉树叶子节点总数-遍历算法的应用</strong></h3><p><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/41.jpg">  </p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">int LeadCount(BiTree T){
+  if(T==NULL){
+    return 0;
+  }
+  if(T-&gt;lchild==NULL &amp;&amp;T-&gt;rchild==NULL)return 1;
+  else 
+  return LeafCount(T-&gt;lchild)+LeafCount(T-&gt;rchild);
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="线索二叉树"><a href="#线索二叉树" class="headerlink" title="线索二叉树"></a><strong>线索二叉树</strong></h2><p>当用二叉链表作为二叉树的存储结构时，可以很方便的找到某个结点的左右孩子；但一般情况下，无法直接找到该结点在某种遍历序列中的前驱和后继结点  </p>
+<p>解决方法：<br><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/42.jpg"><br><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/43.jpg"><br><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/44.jpg">  </p>
+<blockquote>
+<p><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/45.jpg" alt="结点结构">  </p>
+</blockquote>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">typedef struct BiThrNode{
+  int data;
+  int ltag,rtag;
+  struct BiThrNode *lchild,rchild;
+}BithrNode,*BiThrTree;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/46.jpg"><br><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/47.jpg">  </p>
 <h2 id="树和森林"><a href="#树和森林" class="headerlink" title="树和森林"></a><strong>树和森林</strong></h2><blockquote>
 <p>森林：是m棵互不相交的树的集合<br>树和森林可以相互转化  </p>
 </blockquote>
@@ -532,7 +728,7 @@ typedef struct {
 }CTree;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>带双亲的孩子链表：两种模式的混合<br><img src="/2022/11/06/shu-ju-jie-gou-zhi-shu-he-er-cha-shu/15.jpg"></p>
-
+<h3 id="孩子兄弟表示法"><a href="#孩子兄弟表示法" class="headerlink" title="孩子兄弟表示法"></a><strong>孩子兄弟表示法</strong></h3>
                 
             </div>
             <hr/>
@@ -951,7 +1147,7 @@ typedef struct {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">11.9k</span>
+                        class="white-color">13.3k</span>
             
             
             
