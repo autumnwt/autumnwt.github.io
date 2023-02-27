@@ -4,6 +4,46 @@
   
     
     <entry>
+      <title>数据库绪论</title>
+      <link href="/2023/02/27/shu-ju-ku-xu-lun/"/>
+      <url>/2023/02/27/shu-ju-ku-xu-lun/</url>
+      
+        <content type="html"><![CDATA[<p><img src="/2023/02/27/shu-ju-ku-xu-lun/work\myblog\source_posts\数据结构之图\1.jpg" alt="1"></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>汇编语言与逆向工程chp1</title>
+      <link href="/2023/02/24/hui-bian-yu-yan-yu-ni-xiang-gong-cheng-chp1/"/>
+      <url>/2023/02/24/hui-bian-yu-yan-yu-ni-xiang-gong-cheng-chp1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="汇编语言与逆向工程chp1"><a href="#汇编语言与逆向工程chp1" class="headerlink" title="汇编语言与逆向工程chp1"></a>汇编语言与逆向工程chp1</h1><h2 id="指定软件"><a href="#指定软件" class="headerlink" title="指定软件"></a>指定软件</h2><ul><li>IDA PRO  </li><li>x64 dbg</li></ul><hr><p>课程针对节点安全<br>codelite<br>十六进制    hex编辑器010editor  </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 逆向工程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 汇编语言 </tag>
+            
+            <tag> 逆向工程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据结构之图</title>
       <link href="/2022/11/17/shu-ju-jie-gou-zhi-tu/"/>
       <url>/2022/11/17/shu-ju-jie-gou-zhi-tu/</url>
