@@ -1,0 +1,1300 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="维吉尼亚密码的惟密文攻击, AutumnWt">
+    <meta name="description" content="题目要求
+已知下列密文是通过维吉尼亚密码加密得来的，试求其明文。
+Per zlrracm, vxmcs r qipqlczhs. Qs fcv rihw sxxhblrxh sm nkidhvzphw. Ixxvn qsn, lysh si">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>维吉尼亚密码的惟密文攻击 | AutumnWt</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="AutumnWt" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">AutumnWt</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">AutumnWt</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">维吉尼亚密码的惟密文攻击</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6/">
+                                <span class="chip bg-color">现代密码学</span>
+                            </a>
+                        
+                            <a href="/tags/c%E8%AF%AD%E8%A8%80/">
+                                <span class="chip bg-color">c语言</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6/" class="post-category">
+                                现代密码学
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-03-08
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.5k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    26 分
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h4 id="题目要求"><a href="#题目要求" class="headerlink" title="题目要求"></a>题目要求</h4><blockquote>
+<p>已知下列密文是通过维吉尼亚密码加密得来的，试求其明文。</p>
+<p>Per zlrracm, vxmcs r qipqlczhs. Qs fcv rihw sxxhblrxh sm nkidhvzphw. Ixxvn qsn, lysh sifecs uuijrrfyg, mk xj suvc kd ss wbrzrrz uqh jpp zyw qv ylgn osfz fin isi bpgyoj, fg dm zdqzap, cl sifecsqks cdfy iu xyxey iu tipp zcni dt. Sin lj nt rfy jszcxhi jik iyfixky iysmh hzuwwwxpk izayv; mw lv olhkfxeu nr gitrhy d afgcr qkiit vjyucsdum bdw kwvcjssiilbcwc kd wwhg e ads, ohg ewuffx fscavuy; ljnt rfy jszcx hi vemt kvy hrmxichpiei rbx giwtrhzxxlgv duqhvbzqm, wlvc ns uui xdzba ws ypmsnr hf xk hijikwvf.</p>
+</blockquote>
+<p>由于密钥未知，我们采用惟密文攻击。解密方式为重合指数法确定分组m，再利用拟重合指数法得到每个单表密钥。</p>
+<p>鉴于计算过程过于繁琐，我采用C语言代码辅助计算。</p>
+<ul>
+<li>首先，我将密文整理成无空格、均小写的格式，方便计算。</li>
+</ul>
+<blockquote>
+<p>perzlrracmvxmcsrqipqlczhsqsfcvrihwsxxhblrxhsmnkidhvzphwixxvnqsnlyshsifecsuuijrrfygmkxjsuvckdsswbrzrrzuqhjppzywqvylgnosfzfinisibpgyojfgdmzdqzapclsifecsqkscdfyiuxyxeyiutippzcnidtSinljntrfyjszcxhijikiyfixkyiysmhhzuwwwxpkizayvmwlvolhkfxeunrgitrhydafgcrqkiitvjyucsdumbdwkwvcjssiilbcwckdwwhgeadsohgewufffscavuyljntrfyjszcxhivemtkvyhrmxichpieirbxgiwtrhzxxlgvduqhvbzqmwlvcnsuuixdzbawsypmsnrhfxkhijikwvf</p>
+</blockquote>
+<ul>
+<li>接下来进行文本的重合指数运算部分，推测出m分组数。以下为代码实现：</li>
+</ul>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">//文本的重合指数运算部分 
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt; 
+
+//分组 
+char* apart(char text[],int lines,int point){ 
+	char newtext[1000]="";
+	int length=strlen(text);
+	int num=0;
+	for(int i=0;i&lt;length;i++){
+		if(i%lines==0)
+		{
+			newtext[num]=text[i+point];
+			num++;
+		}
+	}
+	newtext[num]='\0';
+//	printf("%s  ",newtext);
+	return newtext;
+}
+
+
+int main(){
+	char mess[1000]="";
+	char *text[300];
+	int lines=1; 
+	printf("请输入文本内容:\n");
+	scanf("%[^\n]", mess);
+	
+	for(lines;lines&lt;30;lines++){
+		double averCI=0;
+		printf("当分组m为%d时:\n",lines);
+		for (int i=0;i&lt;lines;i++){
+          text[i] = (char *)malloc(1000 * sizeof(char)); 
+          strcpy(text[i],apart(mess,lines,i));
+        }
+	
+	    for(int j=0;j&lt;lines;j++){
+	      int length=strlen(text[j]);
+	      double CI=0;
+          for (int p=97;p&lt;123;p++){
+            int count = 0;
+            for (int q=0;q&lt;length;q++){
+              if(text[j][q]==p){
+                    count++;
+              }
+            }
+              if(count&gt;1){
+                CI+=(double(count)/length)*((double(count)-1)/(length-1));
+              }
+          }
+          averCI+=CI;
+          if(j!=lines-1)printf("%lf ",CI);
+          else printf("%lf\n",CI);
+	    }   
+	    printf("当m为%d时平均CI为%lf\n",lines,averCI/lines);
+	} 	
+} <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p> 我将代码得出的<strong>结果</strong>、<strong>截图</strong>与<strong>结论</strong>放在下方：</p>
+<blockquote>
+<p><em><strong>结果：</strong></em></p>
+<p>请输入文本内容:<br>perzlrracmvxmcsrqipqlczhsqsfcvrihwsxxhblrxhsmnkidhvzphwixxvnqsnlyshsifecsuuijrrfygmkxjsuvckdsswbrzrrzuqhjppzywqvylgnosfzfinisibpgyojfgdmzdqzapclsifecsqkscdfyiuxyxeyiutippzcnidtSinljntrfyjszcxhijikiyfixkyiysmhhzuwwwxpkizayvmwlvolhkfxeunrgitrhydafgcrqkiitvjyucsdumbdwkwvcjssiilbcwckdwwhgeadsohgewufffscavuyljntrfyjszcxhivemtkvyhrmxichpieirbxgiwtrhzxxlgvduqhvbzqmwlvcnsuuixdzbawsypmsnrhfxkhijikwvf<br>当分组m为1时:<br>0.042934<br>当m为1时平均CI为0.042934<br>当分组m为2时:<br>0.038641 0.047654<br>当m为2时平均CI为0.043147<br>当分组m为3时:<br>0.040481 0.039107 0.046271<br>当m为3时平均CI为0.041953<br>当分组m为4时:<br>0.040816 0.048237 0.036819 0.042920<br>当m为4时平均CI为0.042198<br>当分组m为5时:<br>0.037975 0.035054 0.048036 0.044142 0.040293<br>当m为5时平均CI为0.041100<br>当分组m为6时:<br>0.039627 0.043823 0.034033 0.043357 0.035096 0.053846<br>当m为6时平均CI为0.041630<br>当分组m为7时:<br>0.043860 0.049499 0.050649 0.053896 0.050000 0.051948 0.055844<br>当m为7时平均CI为0.050814<br>当分组m为8时:<br>0.043265 0.044082 0.035714 0.039966 0.034864 0.057823 0.038265 0.042517<br>当m为8时平均CI为0.042062<br>当分组m为9时:<br>0.038055 0.031712 0.048626 0.033827 0.035941 0.043340 0.034884 0.042082 0.042082<br>当m为9时平均CI为0.038950<br>当分组m为10时:<br>0.028205 0.035897 0.035897 0.046154 0.051282 0.040486 0.028340 0.066127 0.037787 0.028340<br>当m为10时平均CI为0.039852<br>当分组m为11时:<br>0.030159 0.038095 0.057143 0.025397 0.034921 0.036508 0.039683 0.036508 0.041270 0.058824 0.040336<br>当m为11时平均CI为0.039895<br>当分组m为12时:<br>0.045455 0.034091 0.035985 0.034091 0.041667 0.053030 0.034091 0.047348 0.026515 0.041667 0.022177 0.050403<br>当m为12时平均CI为0.038877<br>当分组m为13时:<br>0.040860 0.049462 0.040860 0.049462 0.071264 0.043678 0.043678 0.027586 0.068966 0.034483 0.043678 0.048276  0.041379<br>当m为13时平均CI为0.046433<br>当分组m为14时:<br>0.027094 0.071429 0.034392 0.063492 0.050265 0.047619 0.050265 0.055556 0.039683 0.076720 0.039683 0.037037 0.042328 0.084656<br>当m为14时平均CI为0.051444<br>当分组m为15时:<br>0.022792 0.022792 0.051282 0.037037 0.036923 0.021538 0.046154 0.027692 0.040000 0.043077 0.040000 0.040000 0.055385 0.043077 0.049231<br>当m为15时平均CI为0.038465<br>当分组m为16时:<br>0.053333 0.033333 0.036667 0.023333 0.040000 0.043333 0.043333 0.036667 0.046667 0.046667 0.028986 0.065217 0.050725 0.105072 0.025362 0.032609<br>当m为16时平均CI为0.044457<br>当分组m为17时:<br>0.072464 0.025362 0.028986 0.027668 0.055336 0.055336 0.039526 0.027668 0.051383 0.051383 0.043478 0.043478 0.055336 0.059289 0.023715 0.031621 0.043478<br>当m为17时平均CI为0.043265<br>当分组m为18时:<br>0.051948 0.038961 0.030303 0.030303 0.038961 0.043290 0.043290 0.047619 0.030303 0.038961 0.025974 0.060606 0.030303 0.043290 0.030303 0.030303 0.042857 0.038095<br>当m为18时平均CI为0.038648<br>当分组m为19时:<br>0.019048 0.052381 0.057143 0.061905 0.038095 0.042857 0.052381 0.052381 0.028571 0.080952 0.033333 0.028571 0.076190 0.033333 0.042105 0.026316 0.052632 0.031579 0.047368<br>当m为19时平均CI为0.045113<br>当分组m为20时:<br>0.021053 0.015789 0.021053 0.036842 0.057895 0.031579 0.015789 0.026316 0.042105 0.021053 0.026316 0.042105 0.047368 0.042105 0.046784 0.040936 0.017544 0.093567 0.029240 0.017544<br>当m为20时平均CI为0.034649<br>当分组m为21时:<br>0.046784 0.029240 0.035088 0.035088 0.023392 0.076023 0.070175 0.052632 0.040936 0.052632 0.040936 0.052632 0.046784 0.023392 0.052632 0.070175 0.032680 0.039216 0.078431 0.058824 0.078431<br>当m为21时平均CI为0.049339<br>当分组m为22时:<br>0.019608 0.032680 0.052288 0.032680 0.039216 0.032680 0.052288 0.045752 0.045752 0.091503 0.058824 0.026144 0.045752 0.078431 0.019608 0.039216 0.026144 0.045752 0.026144 0.032680 0.029412 0.044118<br>当m为22时平均CI为0.041667<br>当分组m为23时:<br>0.039216 0.052288 0.032680 0.080882 0.029412 0.036765 0.066176 0.066176 0.044118 0.051471 0.044118 0.058824 0.014706 0.007353 0.044118 0.036765 0.073529 0.044118 0.044118 0.066176 0.029412 0.029412 0.022059<br>当m为23时平均CI为0.044082<br>当分组m为24时:<br>0.095588 0.036765 0.029412 0.051471 0.044118 0.073529 0.036765 0.044118 0.022059 0.029412 0.033333 0.050000 0.058333 0.041667 0.016667 0.041667 0.058333 0.025000 0.033333 0.066667 0.016667 0.033333 0.025000 0.041667<br>当m为24时平均CI为0.041871<br>当分组m为25时:<br>0.058333 0.008333 0.041667 0.050000 0.050000 0.033333 0.025000 0.041667 0.025000 0.058333 0.041667 0.041667 0.033333 0.025000 0.041667 0.058333 0.050000 0.116667 0.033333 0.009524 0.019048 0.076190 0.028571 0.028571 0.038095<br>当m为25时平均CI为0.041333<br>当分组m为26时:<br>0.025000 0.025000 0.041667 0.041667 0.038095 0.085714 0.066667 0.038095 0.038095 0.028571 0.019048 0.019048 0.076190 0.047619 0.047619 0.028571 0.057143 0.152381 0.028571 0.019048 0.019048 0.123810 0.028571 0.076190 0.057143 0.009524<br>当m为26时平均CI为0.047619<br>当分组m为27时:<br>0.028571 0.038095 0.028571 0.038095 0.057143 0.038095 0.028571 0.028571 0.038095 0.028571 0.028571 0.047619 0.028571 0.028571 0.047619 0.038095 0.054945 0.065934 0.032967 0.032967 0.054945 0.021978 0.021978 0.087912 0.010989 0.065934 0.043956<br>当m为27时平均CI为0.039479<br>当分组m为28时:<br>0.028571 0.047619 0.010989 0.043956 0.032967 0.054945 0.054945 0.076923 0.043956 0.109890 0.076923 0.032967 0.032967 0.032967 0.021978 0.098901 0.021978 0.054945 0.032967 0.021978 0.032967 0.054945 0.021978 0.065934 0.054945 0.032967 0.032967 0.109890<br>当m为28时平均CI为0.047855<br>当分组m为29时:<br>0.043956 0.021978 0.021978 0.032967 0.021978 0.054945 0.021978 0.032967 0.065934 0.021978 0.043956 0.032967 0.032967 0.043956 0.043956 0.054945 0.065934 0.025641 0.051282 0.038462 0.038462 0.012821 0.038462 0.076923 0.000000 0.025641 0.038462 0.038462 0.064103<br>当m为29时平均CI为0.038209</p>
+</blockquote>
+<p><img src="/2023/03/08/wei-ji-ni-ya-mi-ma-de-wei-mi-wen-gong-ji/1.jpg"></p>
+<p><em><strong>结论：</strong></em>通过结果分析我们可以得到，当m为7与7的倍数时，所得的CI与平均CI高于m取其他值时的情况。因此我们推测：<strong>m=7</strong></p>
+<ul>
+<li>接着，我来进行文本的拟重合指数运算部分 ，推测出每个单标密钥的移位量。以下为代码实现：</li>
+</ul>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">//文本的拟重合指数运算部分 
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt; 
+//分组
+char* apart(char text[],int lines,int point){ 
+	char newtext[1000]="";
+	int length=strlen(text);
+	int num=0;
+	for(int i=0;i&lt;length;i++){
+		if(i%lines==0)
+		{
+			newtext[num]=text[i+point];
+			num++;
+		}
+	}
+	newtext[num]='\0';
+	printf("%s  ",newtext);
+	return newtext;
+} 
+
+
+int main(){
+	char mess[1000]="";
+	char *text[300];
+	double frequencyP[30][26]={0};
+	double corr[26]={0};
+	//通常文本字母概率来自百度百科，单位为% 
+	int frequencyQ[26]={8.167,1.492,2.782,4.253,12.702,2.228,2.015,6.094,6.966,0.153,0.772,4.025,2.406,6.749,7.507,1.929,0.095,5.987,6.327,9.056,2.758,0.978,2.360,0.150,1.974,0.074};
+	int lines=0; 
+	printf("请输入文本内容:\n");
+	scanf("%[^\n]", mess);
+	printf("请输入所预测的m长度:\n");
+	scanf("%d",&amp;lines);
+	
+	printf("已分组如下:\n");
+
+	for(int i=0;i&lt;lines;i++){
+      text[i] = (char *)malloc(1000 * sizeof(char)); 
+      strcpy(text[i],apart(mess,lines,i));
+    }
+    printf("\n");
+    
+    for(int j=0;j&lt;lines;j++){
+    	 int length=strlen(text[j]);
+          for (int p=97;p&lt;123;p++){
+            int count = 0;
+            for (int q=0;q&lt;length;q++){
+              if(text[j][q]==p){
+                    count++;
+              }
+            }
+              if(count&gt;0){
+                frequencyP[j][p-97]=(count*1.0)/length;
+              }
+          }
+          printf("第%d段的字母频率如下:\n",j+1);
+          for(int o=0;o&lt;26;o++){
+          	printf("%lf ",frequencyP[j][o]);
+		  }
+		  printf("\n");
+		  printf("\n");
+	}
+	
+    for(int ro=0;ro&lt;lines;ro++){
+    	printf("进行第%d段的相关值卷积计算:\n",ro+1);
+    	for(int le=0;le&lt;26;le++){
+    		printf("进行左移%d位的计算:",le);
+    		
+    		for(int ele=0;ele&lt;26;ele++){
+    			corr[le]+=0.01*frequencyQ[ele]*frequencyP[ro][(ele+le)%26];
+			}
+			 printf("correlation=%lf;\n",corr[le]);
+	    }
+	 printf(".....................................................\n");
+     corr[26]={0};
+	} 
+} <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>我将代码得出的<strong>结果</strong>与<strong>结论</strong>放在下方：</p>
+<blockquote>
+<p><em><strong>结果：</strong></em></p>
+<p>请输入文本内容:<br>perzlrracmvxmcsrqipqlczhsqsfcvrihwsxxhblrxhsmnkidhvzphwixxvnqsnlyshsifecsuuijrrfygmkxjsuvckdsswbrzrrzuqhjppzywqvylgnosfzfinisibpgyojfgdmzdqzapclsifecsqkscdfyiuxyxeyiutippzcnidtSinljntrfyjszcxhijikiyfixkyiysmhhzuwwwxpkizayvmwlvolhkfxeunrgitrhydafgcrqkiitvjyucsdumbdwkwvcjssiilbcwckdwwhgeadsohgewufffscavuyljntrfyjszcxhivemtkvyhrmxichpieirbxgiwtrhzxxlgvduqhvbzqmwlvcnsuuixdzbawsypmsnrhfxkhijikwvf<br>请输入所预测的m长度:<br>7<br>已分组如下:<br>pasccxhhxlerxdrpyzbgaedxpttciiuilxtgtdwidduvrxkirrvznzmkv  ecrzvxsvxycrjsrplfpdpcfepSrxyywzvercvuvlwsfufhvcbhdqsbshf  rmqhrhmzvssfsszzgigmcsyyzifhfswaouhrjmcbwofyyiyhxzumuani  zvisibnpnhuyuwuynnyzlqiicnyiimwylnyqybjchhfljvhpgxqwuwrj  lxpqhlkhqsugvbqwoiodskuunljjxhxvhrdkudswggsjseriixhlishi  rmqswriwsiimcrhqssjqisxtijsikhpmkgaicwsceecnzmmewlvvxyfk  rclfsxdinfjkkzjvfifzfcyidnzkyzkwfifiskikawatctxitgbcdpxw<br>第1段的字母频率如下:<br>0.035088 0.017544 0.052632 0.087719 0.035088 0.000000 0.035088 0.035088 0.087719 0.000000 0.035088 0.035088 0.017544 0.017544 0.000000 0.052632 0.000000 0.087719 0.017544 0.070175 0.035088 0.052632 0.017544 0.105263 0.017544 0.052632</p>
+<p>第2段的字母频率如下:<br>0.000000 0.035088 0.087719 0.035088 0.052632 0.087719 0.000000 0.052632 0.000000 0.017544 0.000000 0.035088 0.000000 0.000000 0.000000 0.070175 0.017544 0.087719 0.087719 0.000000 0.035088 0.105263 0.035088 0.052632 0.052632 0.035088</p>
+<p>第3段的字母频率如下:<br>0.035714 0.017857 0.035714 0.000000 0.000000 0.071429 0.035714 0.089286 0.071429 0.017857 0.000000 0.000000 0.089286 0.017857 0.035714 0.000000 0.017857 0.053571 0.107143 0.000000 0.053571 0.017857 0.035714 0.017857 0.089286 0.089286</p>
+<p>第4段的字母频率如下:<br>0.000000 0.035714 0.035714 0.000000 0.000000 0.017857 0.017857 0.071429 0.107143 0.053571 0.000000 0.053571 0.017857 0.107143 0.000000 0.035714 0.053571 0.017857 0.017857 0.000000 0.071429 0.035714 0.071429 0.017857 0.125000 0.035714</p>
+<p>第5段的字母频率如下:<br>0.000000 0.017857 0.000000 0.053571 0.017857 0.000000 0.053571 0.107143 0.089286 0.053571 0.053571 0.071429 0.000000 0.017857 0.035714 0.017857 0.053571 0.035714 0.107143 0.000000 0.071429 0.035714 0.035714 0.071429 0.000000 0.000000</p>
+<p>第6段的字母频率如下:<br>0.017857 0.000000 0.071429 0.000000 0.053571 0.017857 0.017857 0.035714 0.125000 0.035714 0.053571 0.017857 0.089286 0.017857 0.000000 0.017857 0.053571 0.053571 0.125000 0.017857 0.000000 0.035714 0.071429 0.035714 0.017857 0.017857</p>
+<p>第7段的字母频率如下:<br>0.035714 0.017857 0.071429 0.053571 0.000000 0.125000 0.017857 0.000000 0.125000 0.035714 0.107143 0.017857 0.000000 0.035714 0.000000 0.017857 0.000000 0.017857 0.035714 0.053571 0.000000 0.017857 0.053571 0.053571 0.035714 0.071429</p>
+<p>进行第1段的相关值卷积计算:<br>进行左移0位的计算:correlation=0.036140;<br>进行左移1位的计算:correlation=0.028421;<br>进行左移2位的计算:correlation=0.030702;<br>进行左移3位的计算:correlation=0.036140;<br>进行左移4位的计算:correlation=0.043333;<br>进行左移5位的计算:correlation=0.027193;<br>进行左移6位的计算:correlation=0.035439;<br>进行左移7位的计算:correlation=0.030526;<br>进行左移8位的计算:correlation=0.032105;<br>进行左移9位的计算:correlation=0.030877;<br>进行左移10位的计算:correlation=0.036316;<br>进行左移11位的计算:correlation=0.036316;<br>进行左移12位的计算:correlation=0.031754;<br>进行左移13位的计算:correlation=0.031579;<br>进行左移14位的计算:correlation=0.028772;<br>==进行左移15位的计算:correlation=0.048246;==<br>进行左移16位的计算:correlation=0.034561;<br>进行左移17位的计算:correlation=0.038421;<br>进行左移18位的计算:correlation=0.027368;<br>进行左移19位的计算:correlation=0.039474;<br>进行左移20位的计算:correlation=0.029474;<br>进行左移21位的计算:correlation=0.036140;<br>进行左移22位的计算:correlation=0.030175;<br>进行左移23位的计算:correlation=0.033158;<br>进行左移24位的计算:correlation=0.030175;<br>进行左移25位的计算:correlation=0.037193;<br>……………………………………………..<br>进行第2段的相关值卷积计算:<br>进行左移0位的计算:correlation=0.064561;<br>进行左移1位的计算:correlation=0.063684;<br>进行左移2位的计算:correlation=0.064386;<br>进行左移3位的计算:correlation=0.072807;<br>进行左移4位的计算:correlation=0.081579;<br>进行左移5位的计算:correlation=0.057544;<br>进行左移6位的计算:correlation=0.057368;<br>进行左移7位的计算:correlation=0.063860;<br>进行左移8位的计算:correlation=0.056667;<br>进行左移9位的计算:correlation=0.063509;<br>进行左移10位的计算:correlation=0.072281;<br>进行左移11位的计算:correlation=0.077193;<br>进行左移12位的计算:correlation=0.060702;<br>进行左移13位的计算:correlation=0.070175;<br>进行左移14位的计算:correlation=0.072105;<br>进行左移15位的计算:correlation=0.080526;<br>进行左移16位的计算:correlation=0.065965;<br>==进行左移17位的计算:correlation=0.083333;==<br>进行左移18位的计算:correlation=0.060175;<br>进行左移19位的计算:correlation=0.065439;<br>进行左移20位的计算:correlation=0.060351;<br>进行左移21位的计算:correlation=0.065789;<br>进行左移22位的计算:correlation=0.055965;<br>进行左移23位的计算:correlation=0.065088;<br>进行左移24位的计算:correlation=0.071754;<br>进行左移25位的计算:correlation=0.071754;<br>……………………………………………..<br>进行第3段的相关值卷积计算:<br>进行左移0位的计算:correlation=0.097240;<br>进行左移1位的计算:correlation=0.099934;<br>进行左移2位的计算:correlation=0.089565;<br>进行左移3位的计算:correlation=0.104771;<br>==进行左移4位的计算:correlation=0.119436;==<br>进行左移5位的计算:correlation=0.098615;<br>进行左移6位的计算:correlation=0.092190;<br>进行左移7位的计算:correlation=0.099574;<br>进行左移8位的计算:correlation=0.089524;<br>进行左移9位的计算:correlation=0.090830;<br>进行左移10位的计算:correlation=0.103174;<br>进行左移11位的计算:correlation=0.106657;<br>进行左移12位的计算:correlation=0.096416;<br>进行左移13位的计算:correlation=0.104283;<br>==进行左移14位的计算:correlation=0.118534;==<br>进行左移15位的计算:correlation=0.108741;<br>进行左移16位的计算:correlation=0.098643;<br>进行左移17位的计算:correlation=0.116548;<br>进行左移18位的计算:correlation=0.095711;<br>进行左移19位的计算:correlation=0.096153;<br>进行左移20位的计算:correlation=0.105887;<br>进行左移21位的计算:correlation=0.104004;<br>进行左移22位的计算:correlation=0.081858;<br>进行左移23位的计算:correlation=0.086516;<br>进行左移24位的计算:correlation=0.108540;<br>进行左移25位的计算:correlation=0.111219;<br>……………………………………………..<br>进行第4段的相关值卷积计算:<br>进行左移0位的计算:correlation=0.125097;<br>进行左移1位的计算:correlation=0.131363;<br>进行左移2位的计算:correlation=0.123850;<br>进行左移3位的计算:correlation=0.139771;<br>进行左移4位的计算:correlation=0.156400;<br>进行左移5位的计算:correlation=0.142544;<br>进行左移6位的计算:correlation=0.125226;<br>进行左移7位的计算:correlation=0.136003;<br>进行左移8位的计算:correlation=0.125060;<br>进行左移9位的计算:correlation=0.131544;<br>进行左移10位的计算:correlation=0.130674;<br>进行左移11位的计算:correlation=0.137372;<br>进行左移12位的计算:correlation=0.121595;<br>进行左移13位的计算:correlation=0.138925;<br>进行左移14位的计算:correlation=0.147462;<br>进行左移15位的计算:correlation=0.141598;<br>进行左移16位的计算:correlation=0.140251;<br>进行左移17位的计算:correlation=0.151726;<br>进行左移18位的计算:correlation=0.124997;<br>进行左移19位的计算:correlation=0.123296;<br>==进行左移20位的计算:correlation=0.162137;==<br>进行左移21位的计算:correlation=0.140789;<br>进行左移22位的计算:correlation=0.112572;<br>进行左移23位的计算:correlation=0.112945;<br>进行左移24位的计算:correlation=0.143540;<br>进行左移25位的计算:correlation=0.137826;<br>……………………………………………..<br>进行第5段的相关值卷积计算:<br>进行左移0位的计算:correlation=0.159383;<br>进行左移1位的计算:correlation=0.164577;<br>进行左移2位的计算:correlation=0.156350;<br>==进行左移3位的计算:correlation=0.188700;==<br>==进行左移4位的计算:correlation=0.202115;==<br>进行左移5位的计算:correlation=0.175758;<br>进行左移6位的计算:correlation=0.158261;<br>进行左移7位的计算:correlation=0.173681;<br>进行左移8位的计算:correlation=0.151310;<br>进行左移9位的计算:correlation=0.160294;<br>进行左移10位的计算:correlation=0.165138;<br>进行左移11位的计算:correlation=0.165586;<br>进行左移12位的计算:correlation=0.146952;<br>进行左移13位的计算:correlation=0.166961;<br>==进行左移14位的计算:correlation=0.188891;==<br>进行左移15位的计算:correlation=0.181241;<br>进行左移16位的计算:correlation=0.183465;<br>进行左移17位的计算:correlation=0.182083;<br>进行左移18位的计算:correlation=0.163033;<br>进行左移19位的计算:correlation=0.156153;<br>==进行左移20位的计算:correlation=0.195172;==<br>进行左移21位的计算:correlation=0.168289;<br>进行左移22位的计算:correlation=0.143108;<br>进行左移23位的计算:correlation=0.144552;<br>进行左移24位的计算:correlation=0.167826;<br>进行左移25位的计算:correlation=0.175683;<br>……………………………………………..<br>进行第6段的相关值卷积计算:<br>进行左移0位的计算:correlation=0.196169;<br>进行左移1位的计算:correlation=0.194934;<br>进行左移2位的计算:correlation=0.186707;<br>进行左移3位的计算:correlation=0.220307;<br>==进行左移4位的计算:correlation=0.256222;==<br>进行左移5位的计算:correlation=0.214865;<br>进行左移6位的计算:correlation=0.186476;<br>进行左移7位的计算:correlation=0.198324;<br>进行左移8位的计算:correlation=0.191667;<br>进行左移9位的计算:correlation=0.192259;<br>进行左移10位的计算:correlation=0.197638;<br>进行左移11位的计算:correlation=0.197014;<br>进行左移12位的计算:correlation=0.178380;<br>进行左移13位的计算:correlation=0.192140;<br>进行左移14位的计算:correlation=0.229784;<br>进行左移15位的计算:correlation=0.219633;<br>进行左移16位的计算:correlation=0.217572;<br>进行左移17位的计算:correlation=0.218155;<br>进行左移18位的计算:correlation=0.199104;<br>进行左移19位的计算:correlation=0.187581;<br>进行左移20位的计算:correlation=0.228029;<br>进行左移21位的计算:correlation=0.199182;<br>进行左移22位的计算:correlation=0.173108;<br>进行左移23位的计算:correlation=0.173123;<br>进行左移24位的计算:correlation=0.203719;<br>进行左移25位的计算:correlation=0.212469;<br>……………………………………………..<br>进行第7段的相关值卷积计算:<br>进行左移0位的计算:correlation=0.225454;<br>进行左移1位的计算:correlation=0.232256;<br>进行左移2位的计算:correlation=0.220279;<br>进行左移3位的计算:correlation=0.249057;<br>==进行左移4位的计算:correlation=0.292650;==<br>进行左移5位的计算:correlation=0.256651;<br>进行左移6位的计算:correlation=0.225404;<br>进行左移7位的计算:correlation=0.224753;<br>进行左移8位的计算:correlation=0.223095;<br>进行左移9位的计算:correlation=0.222794;<br>进行左移10位的计算:correlation=0.231209;<br>进行左移11位的计算:correlation=0.227372;<br>进行左移12位的计算:correlation=0.211416;<br>进行左移13位的计算:correlation=0.217318;<br>进行左移14位的计算:correlation=0.262462;<br>进行左移15位的计算:correlation=0.259455;<br>进行左移16位的计算:correlation=0.246858;<br>==进行左移17位的计算:correlation=0.263869;==<br>进行左移18位的计算:correlation=0.238568;<br>进行左移19位的计算:correlation=0.218653;<br>进行左移20位的计算:correlation=0.262137;<br>进行左移21位的计算:correlation=0.235968;<br>进行左移22位的计算:correlation=0.207215;<br>进行左移23位的计算:correlation=0.208838;<br>进行左移24位的计算:correlation=0.235683;<br>进行左移25位的计算:correlation=0.245147;<br>……………………………………………..</p>
+</blockquote>
+<p><em><strong>结论：</strong></em>通过结果分析我们可以得到：</p>
+<ul>
+<li><p><strong>第1段</strong>进行相关值计算后:<br>进行左移15位(a-p)的计算结果(0.048246)值明显最大</p>
+</li>
+<li><p><strong>第2段</strong>进行相关值计算后:<br>进行左移17位(a-r)的计算结果(0.083333)值明显最大</p>
+</li>
+<li><p><strong>第3段</strong>进行相关值计算后:<br>进行左移4位(a-e)的计算结果(0.119436)值最大</p>
+<p>其次为左移14位(a-o)的计算结果(0.118534)值与之接近</p>
+</li>
+<li><p><strong>第4段</strong>进行相关值计算后:<br>进行左移20位(a-u)的计算结果(0.162137)值最大</p>
+</li>
+<li><p><strong>第5段</strong>进行相关值计算后:</p>
+<p>发现近似较多</p>
+<p>进行左移4位(a-e)的计算结果(0.202115)值最大</p>
+<p>其次为左移20位(a-u)的计算结果(0.195172)值与之接近</p>
+<p>其次为左移14位(a-o)的计算结果(0.188891)值与之接近</p>
+<p>其次为左移3位(a-d)的计算结果(0.188700)值与之接近</p>
+</li>
+<li><p><strong>第6段</strong>进行相关值计算后:<br>进行左移4位(a-e)的计算结果(0.256222)值最大</p>
+</li>
+<li><p><strong>第7段</strong>进行相关值计算后:</p>
+<p>进行左移4位(a-e)的计算结果(0.292650)值最大</p>
+<p>其次为左移17位(a-r)的计算结果(0.263869)值与之接近</p>
+</li>
+<li><p>最后，我们按照顺序依次将移位量代入进行比对，发现以下移位方式符合正常单词拼写：</p>
+<blockquote>
+<p><strong>第1段</strong>左移15位(a-p)</p>
+<p><strong>第2段</strong>左移17位(a-r)</p>
+<p><strong>第3段</strong>左移14位(a-o)</p>
+<p><strong>第4段</strong>左移20位(a-u)</p>
+<p><strong>第5段</strong>左移3位(a-d)</p>
+<p><strong>第6段</strong>左移4位(a-e)</p>
+<p><strong>第7段</strong>左移17位(a-r)</p>
+</blockquote>
+</li>
+</ul>
+<p>最终解密后为：</p>
+<p>And finally, build a community. No one does big things by themselves. Right now, when people are scared, it is easy to be cynical and say let me just look out for myself, or my family, or people who look or think or pray like me. But if we are going to get through these difficult times; if we are going to create a world where everybody has the opportunity to find a job, and afford college; if we are going to save the environment and defeat future pandemics, then we are going to have to do it together.</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">AutumnWt</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://autumnwt.github.io/2023/03/08/wei-ji-ni-ya-mi-ma-de-wei-mi-wen-gong-ji/">https://autumnwt.github.io/2023/03/08/wei-ji-ni-ya-mi-ma-de-wei-mi-wen-gong-ji/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">AutumnWt</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6/">
+                                    <span class="chip bg-color">现代密码学</span>
+                                </a>
+                            
+                                <a href="/tags/c%E8%AF%AD%E8%A8%80/">
+                                    <span class="chip bg-color">c语言</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/03/11/chao-di-zeng-bei-bao-suan-fa/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="超递增背包算法">
+                        
+                        <span class="card-title">超递增背包算法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-11
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6/" class="post-category">
+                                    现代密码学
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6/">
+                        <span class="chip bg-color">现代密码学</span>
+                    </a>
+                    
+                    <a href="/tags/c%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">c语言</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/03/06/fang-she-mi-ma-yu-dan-biao-dai-huan-de-dai-ma-shi-xian/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="仿射密码与单表代换的代码实现">
+                        
+                        <span class="card-title">仿射密码与单表代换的代码实现</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6/" class="post-category">
+                                    现代密码学
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6/">
+                        <span class="chip bg-color">现代密码学</span>
+                    </a>
+                    
+                    <a href="/tags/c%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">c语言</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <a href="/about" target="_blank">AutumnWt</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">45.6k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/autumnwt" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:h2003163733@126.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1727950899" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1727950899" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="7eKgBF3JrRHloZKOHSJnVwMw-gzGzoHsz" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

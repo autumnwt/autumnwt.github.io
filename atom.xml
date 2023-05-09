@@ -6,7 +6,7 @@
   <link href="https://autumnwt.github.io/atom.xml" rel="self"/>
   
   <link href="https://autumnwt.github.io/"/>
-  <updated>2023-03-08T03:07:01.798Z</updated>
+  <updated>2023-05-09T15:20:27.759Z</updated>
   <id>https://autumnwt.github.io/</id>
   
   <author>
@@ -15,6 +15,302 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>IDA工具使用</title>
+    <link href="https://autumnwt.github.io/2023/05/09/ida-gong-ju-shi-yong/"/>
+    <id>https://autumnwt.github.io/2023/05/09/ida-gong-ju-shi-yong/</id>
+    <published>2023-05-09T14:59:07.000Z</published>
+    <updated>2023-05-09T15:20:27.759Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;IDA工具使用&quot;&gt;&lt;a href=&quot;#IDA工具使用&quot; class=&quot;headerlink&quot; title=&quot;IDA工具使用&quot;&gt;&lt;/a&gt;IDA工具使用&lt;/h2&gt;&lt;h3 id=&quot;快捷键&quot;&gt;&lt;a href=&quot;#快捷键&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="汇编语言与逆向工程" scheme="https://autumnwt.github.io/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E4%B8%8E%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/"/>
+    
+    
+    <category term="逆向工程" scheme="https://autumnwt.github.io/tags/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/"/>
+    
+    <category term="工具" scheme="https://autumnwt.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="IDA" scheme="https://autumnwt.github.io/tags/IDA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据库数据控制实验</title>
+    <link href="https://autumnwt.github.io/2023/05/03/shu-ju-ku-shu-ju-kong-zhi-shi-yan/"/>
+    <id>https://autumnwt.github.io/2023/05/03/shu-ju-ku-shu-ju-kong-zhi-shi-yan/</id>
+    <published>2023-05-03T08:54:12.000Z</published>
+    <updated>2023-05-05T09:14:46.236Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;数据库实验：数据控制&quot;&gt;&lt;a href=&quot;#数据库实验：数据控制&quot; class=&quot;headerlink&quot; title=&quot;数据库实验：数据控制&quot;&gt;&lt;/a&gt;数据库实验：数据控制&lt;/h1&gt;&lt;p&gt;黄芃洋 2021212021</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="https://autumnwt.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="数据库 ." scheme="https://autumnwt.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>汇编语言初次尝试</title>
+    <link href="https://autumnwt.github.io/2023/04/08/hui-bian-yu-yan-chu-ci-chang-shi/"/>
+    <id>https://autumnwt.github.io/2023/04/08/hui-bian-yu-yan-chu-ci-chang-shi/</id>
+    <published>2023-04-08T11:52:50.000Z</published>
+    <updated>2023-04-08T14:45:15.953Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;作业-1：汇编语言&quot;&gt;&lt;a href=&quot;#作业-1：汇编语言&quot; class=&quot;headerlink&quot; title=&quot;作业-1：汇编语言&quot;&gt;&lt;/a&gt;&lt;strong&gt;作业-1：汇编语言&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;黄芃洋</summary>
+        
+      
+    
+    
+    
+    <category term="汇编语言与逆向工程" scheme="https://autumnwt.github.io/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E4%B8%8E%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/"/>
+    
+    
+    <category term="逆向工程" scheme="https://autumnwt.github.io/tags/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/"/>
+    
+    <category term="C语言" scheme="https://autumnwt.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
+    
+    <category term="汇编语言" scheme="https://autumnwt.github.io/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/"/>
+    
+    <category term="冒泡排序" scheme="https://autumnwt.github.io/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>线性规划</title>
+    <link href="https://autumnwt.github.io/2023/03/27/xian-xing-gui-hua-1/"/>
+    <id>https://autumnwt.github.io/2023/03/27/xian-xing-gui-hua-1/</id>
+    <published>2023-03-27T10:28:53.000Z</published>
+    <updated>2023-03-27T13:51:37.912Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;线性规划模型作业&quot;&gt;&lt;a href=&quot;#线性规划模型作业&quot; class=&quot;headerlink&quot; title=&quot;线性规划模型作业&quot;&gt;&lt;/a&gt;线性规划模型作业&lt;/h2&gt;&lt;p&gt;黄芃洋  2021211801班 2021212021&lt;/p&gt;
+&lt;h4</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>线性规划</title>
+    <link href="https://autumnwt.github.io/2023/03/27/xian-xing-gui-hua/"/>
+    <id>https://autumnwt.github.io/2023/03/27/xian-xing-gui-hua/</id>
+    <published>2023-03-27T10:28:53.000Z</published>
+    <updated>2023-03-28T14:14:44.245Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;线性规划模型&quot;&gt;&lt;a href=&quot;#线性规划模型&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="数学建模" scheme="https://autumnwt.github.io/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/"/>
+    
+    
+    <category term="数学建模" scheme="https://autumnwt.github.io/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/"/>
+    
+    <category term="线性规划" scheme="https://autumnwt.github.io/tags/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/"/>
+    
+    <category term="matlab" scheme="https://autumnwt.github.io/tags/matlab/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>汇编第一次作业</title>
+    <link href="https://autumnwt.github.io/2023/03/24/hui-bian-di-yi-ci-zuo-ye/"/>
+    <id>https://autumnwt.github.io/2023/03/24/hui-bian-di-yi-ci-zuo-ye/</id>
+    <published>2023-03-24T08:11:54.000Z</published>
+    <updated>2023-03-24T08:13:30.987Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;过程中遇到的一些问题：&lt;/p&gt;
+&lt;p&gt;1.汇编中的movzx和普通的mov有什么区别&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;movzx&lt;/code&gt; 指令与普通的 &lt;code&gt;mov&lt;/code&gt; 指令有所不同。&lt;code&gt;mov&lt;/code&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>DES密钥编排算法</title>
+    <link href="https://autumnwt.github.io/2023/03/20/des-mi-yao-bian-pai-suan-fa/"/>
+    <id>https://autumnwt.github.io/2023/03/20/des-mi-yao-bian-pai-suan-fa/</id>
+    <published>2023-03-20T12:37:22.000Z</published>
+    <updated>2023-03-21T11:53:09.403Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;第二题-题目要求&quot;&gt;&lt;a href=&quot;#第二题-题目要求&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="现代密码学" scheme="https://autumnwt.github.io/categories/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    
+    
+    <category term="现代密码学" scheme="https://autumnwt.github.io/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    
+    <category term="c语言" scheme="https://autumnwt.github.io/tags/c%E8%AF%AD%E8%A8%80/"/>
+    
+    <category term="python" scheme="https://autumnwt.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关系数据库</title>
+    <link href="https://autumnwt.github.io/2023/03/14/guan-xi-shu-ju-ku/"/>
+    <id>https://autumnwt.github.io/2023/03/14/guan-xi-shu-ju-ku/</id>
+    <published>2023-03-14T06:47:02.000Z</published>
+    <updated>2023-03-27T04:24:04.756Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;关系数据库&quot;&gt;&lt;a href=&quot;#关系数据库&quot; class=&quot;headerlink&quot; title=&quot;关系数据库&quot;&gt;&lt;/a&gt;关系数据库&lt;/h2&gt;&lt;h3 id=&quot;关系数据结构及形式化定义&quot;&gt;&lt;a href=&quot;#关系数据结构及形式化定义&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="https://autumnwt.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="数据库" scheme="https://autumnwt.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>应用层</title>
+    <link href="https://autumnwt.github.io/2023/03/13/ying-yong-ceng/"/>
+    <id>https://autumnwt.github.io/2023/03/13/ying-yong-ceng/</id>
+    <published>2023-03-13T03:57:57.000Z</published>
+    <updated>2023-03-14T06:42:16.461Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;应用层&quot;&gt;&lt;a href=&quot;#应用层&quot; class=&quot;headerlink&quot; title=&quot;应用层&quot;&gt;&lt;/a&gt;应用层&lt;/h2&gt;&lt;h3 id=&quot;网络应用模型&quot;&gt;&lt;a href=&quot;#网络应用模型&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="计算机网络" scheme="https://autumnwt.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+    <category term="应用层" scheme="https://autumnwt.github.io/tags/%E5%BA%94%E7%94%A8%E5%B1%82/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>超递增背包算法</title>
+    <link href="https://autumnwt.github.io/2023/03/11/chao-di-zeng-bei-bao-suan-fa/"/>
+    <id>https://autumnwt.github.io/2023/03/11/chao-di-zeng-bei-bao-suan-fa/</id>
+    <published>2023-03-11T05:40:48.000Z</published>
+    <updated>2023-03-11T07:30:35.382Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;题目要求&quot;&gt;&lt;a href=&quot;#题目要求&quot; class=&quot;headerlink&quot; title=&quot;题目要求&quot;&gt;&lt;/a&gt;题目要求&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="现代密码学" scheme="https://autumnwt.github.io/categories/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    
+    
+    <category term="现代密码学" scheme="https://autumnwt.github.io/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    
+    <category term="c语言" scheme="https://autumnwt.github.io/tags/c%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>维吉尼亚密码的惟密文攻击</title>
+    <link href="https://autumnwt.github.io/2023/03/08/wei-ji-ni-ya-mi-ma-de-wei-mi-wen-gong-ji/"/>
+    <id>https://autumnwt.github.io/2023/03/08/wei-ji-ni-ya-mi-ma-de-wei-mi-wen-gong-ji/</id>
+    <published>2023-03-08T12:08:38.000Z</published>
+    <updated>2023-03-08T13:07:05.295Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;题目要求&quot;&gt;&lt;a href=&quot;#题目要求&quot; class=&quot;headerlink&quot; title=&quot;题目要求&quot;&gt;&lt;/a&gt;题目要求&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;已知下列密文是通过维吉尼亚密码加密得来的，试求其明文。&lt;/p&gt;
+&lt;p&gt;Per zlrracm,</summary>
+        
+      
+    
+    
+    
+    <category term="现代密码学" scheme="https://autumnwt.github.io/categories/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    
+    
+    <category term="现代密码学" scheme="https://autumnwt.github.io/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    
+    <category term="c语言" scheme="https://autumnwt.github.io/tags/c%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
   
   <entry>
     <title>仿射密码与单表代换的代码实现</title>
@@ -77,7 +373,7 @@
     <link href="https://autumnwt.github.io/2023/03/03/hui-bian-yu-yan/"/>
     <id>https://autumnwt.github.io/2023/03/03/hui-bian-yu-yan/</id>
     <published>2023-03-03T07:44:01.000Z</published>
-    <updated>2023-03-08T03:06:37.566Z</updated>
+    <updated>2023-03-11T05:39:34.566Z</updated>
     
     
       
@@ -129,7 +425,7 @@
     <link href="https://autumnwt.github.io/2023/02/24/hui-bian-yu-yan-yu-ni-xiang-gong-cheng-chp1/"/>
     <id>https://autumnwt.github.io/2023/02/24/hui-bian-yu-yan-yu-ni-xiang-gong-cheng-chp1/</id>
     <published>2023-02-24T07:44:14.000Z</published>
-    <updated>2023-02-24T10:46:34.491Z</updated>
+    <updated>2023-03-08T03:09:28.864Z</updated>
     
     
       
@@ -142,7 +438,7 @@
     
     
     
-    <category term="逆向工程" scheme="https://autumnwt.github.io/categories/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/"/>
+    <category term="汇编语言与逆向工程" scheme="https://autumnwt.github.io/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E4%B8%8E%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/"/>
     
     
     <category term="逆向工程" scheme="https://autumnwt.github.io/tags/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/"/>
@@ -156,7 +452,7 @@
     <link href="https://autumnwt.github.io/2022/11/17/shu-ju-jie-gou-zhi-tu/"/>
     <id>https://autumnwt.github.io/2022/11/17/shu-ju-jie-gou-zhi-tu/</id>
     <published>2022-11-17T14:05:29.000Z</published>
-    <updated>2022-12-07T11:32:35.346Z</updated>
+    <updated>2023-04-09T06:19:49.306Z</updated>
     
     
       
@@ -276,118 +572,6 @@
     <category term="算法" scheme="https://autumnwt.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
     <category term="串" scheme="https://autumnwt.github.io/tags/%E4%B8%B2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构之栈和队列</title>
-    <link href="https://autumnwt.github.io/2022/10/04/shu-ju-jie-gou-zhi-zhan-he-dui-lie/"/>
-    <id>https://autumnwt.github.io/2022/10/04/shu-ju-jie-gou-zhi-zhan-he-dui-lie/</id>
-    <published>2022-10-04T15:17:49.000Z</published>
-    <updated>2022-10-11T14:46:01.588Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;数据结构之栈和队列&quot;&gt;&lt;a href=&quot;#数据结构之栈和队列&quot; class=&quot;headerlink&quot; title=&quot;数据结构之栈和队列&quot;&gt;&lt;/a&gt;数据结构之栈和队列&lt;/h1&gt;&lt;h2 id=&quot;栈和队列的定义&quot;&gt;&lt;a href=&quot;#栈和队列的定义&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="数据结构" scheme="https://autumnwt.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-    <category term="数据结构" scheme="https://autumnwt.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    <category term="C语言" scheme="https://autumnwt.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
-    
-    <category term="算法" scheme="https://autumnwt.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="栈" scheme="https://autumnwt.github.io/tags/%E6%A0%88/"/>
-    
-    <category term="队列" scheme="https://autumnwt.github.io/tags/%E9%98%9F%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构之线性表</title>
-    <link href="https://autumnwt.github.io/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/"/>
-    <id>https://autumnwt.github.io/2022/09/11/shu-ju-jie-gou-zhi-xian-xing-biao/</id>
-    <published>2022-09-11T14:58:26.000Z</published>
-    <updated>2022-10-04T15:21:16.565Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;数据结构之线性表&quot;&gt;&lt;a href=&quot;#数据结构之线性表&quot; class=&quot;headerlink&quot; title=&quot;数据结构之线性表&quot;&gt;&lt;/a&gt;数据结构之线性表&lt;/h1&gt;&lt;h2 id=&quot;知识回顾&quot;&gt;&lt;a href=&quot;#知识回顾&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="数据结构" scheme="https://autumnwt.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-    <category term="数据结构" scheme="https://autumnwt.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    <category term="C语言" scheme="https://autumnwt.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
-    
-    <category term="算法" scheme="https://autumnwt.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="线性表" scheme="https://autumnwt.github.io/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP基础简记ch.1</title>
-    <link href="https://autumnwt.github.io/2022/09/07/php-ji-chu-jian-ji-ch.1/"/>
-    <id>https://autumnwt.github.io/2022/09/07/php-ji-chu-jian-ji-ch.1/</id>
-    <published>2022-09-07T14:16:35.000Z</published>
-    <updated>2022-09-13T13:43:38.758Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;PHP基础简记ch-1&quot;&gt;&lt;a href=&quot;#PHP基础简记ch-1&quot; class=&quot;headerlink&quot; title=&quot;PHP基础简记ch.1&quot;&gt;&lt;/a&gt;PHP基础简记ch.1&lt;/h1&gt;&lt;h2 id=&quot;PHP标记&quot;&gt;&lt;a href=&quot;#PHP标记&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="PHP" scheme="https://autumnwt.github.io/categories/PHP/"/>
-    
-    
-    <category term="PHP" scheme="https://autumnwt.github.io/tags/PHP/"/>
-    
-    <category term="语言" scheme="https://autumnwt.github.io/tags/%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://autumnwt.github.io/2022/09/02/hello-world/"/>
-    <id>https://autumnwt.github.io/2022/09/02/hello-world/</id>
-    <published>2022-09-02T12:46:56.471Z</published>
-    <updated>2022-09-07T14:48:48.236Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
     
   </entry>
   
