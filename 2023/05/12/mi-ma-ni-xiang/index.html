@@ -1,0 +1,1351 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="密码逆向, AutumnWt">
+    <meta name="description" content="作业-2：加密算法黄芃洋 2021212021
+
+题目要求
+问题-1：找到开头“This program cannot be run …” 这个字符串的内存起始地址（即字符串的指针），并准确计算该字符串的长度；
+问题-2：需要结合具体的加密">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>密码逆向 | AutumnWt</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="AutumnWt" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">AutumnWt</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">AutumnWt</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">密码逆向</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/">
+                                <span class="chip bg-color">逆向工程</span>
+                            </a>
+                        
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">
+                                <span class="chip bg-color">汇编语言</span>
+                            </a>
+                        
+                            <a href="/tags/MD5/">
+                                <span class="chip bg-color">MD5</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E4%B8%8E%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/" class="post-category">
+                                汇编语言与逆向工程
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-05-12
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    10 分
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="作业-2：加密算法"><a href="#作业-2：加密算法" class="headerlink" title="作业-2：加密算法"></a><strong>作业-2：加密算法</strong></h2><p>黄芃洋 2021212021</p>
+<hr>
+<h4 id="题目要求"><a href="#题目要求" class="headerlink" title="题目要求"></a>题目要求</h4><blockquote>
+<p><strong>问题-1</strong>：找到开头“This program cannot be run …” 这个字符串的内存起始地址（即字符串的指针），并准确计算该字符串的长度；</p>
+<p><strong>问题-2</strong>：需要结合具体的加密操作逻辑，说明所发现的加密算法。</p>
+</blockquote>
+<h5 id="以下是作答："><a href="#以下是作答：" class="headerlink" title="以下是作答："></a>以下是作答：</h5><hr>
+<h5 id="问题-1"><a href="#问题-1" class="headerlink" title="问题-1"></a>问题-1</h5><ul>
+<li><p>首先我们尝试运行<code>cryptp.exe</code>文件查看操作前被打印语句情况，简单对目标字符串进行初步定位。观察到<code>“This program cannot be run ...”</code>这一字符串处于两横线间，退出文件并将其用IDA工具打开</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/1.jpg" style="zoom:45%;">
+
+
+</li>
+<li><p>首先猜测目标字符串有可能是存于<code>.data</code>数据段的静态字符串数据，因此通过<code>Alt+t</code>查找该字符串的关键字，但未查询到任何结果</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/2.jpg" style="zoom:45%;">
+
+
+</li>
+<li><p>因此改变思路在 Functions Window 点击定位至<code>_main</code>函数查看可用信息。</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/3.jpg" style="zoom:45%;">
+
+<p>来到<code> _main</code>函数后观察到了存于<code>.data</code>数据段一个内容为 <code>'--------------FOR FUN------------------...'</code>名为 <code>aForFunS</code> 的字符串，这段汇编代码表示在栈上存储了一个指向字符串 <code>aForFunS</code> 的指针，然后调用 <code>printf</code> 函数来打印该字符串</p>
+</li>
+<li><p>双击<code>aForFunS</code>查看该字符串的具体内容</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/4.jpg" style="zoom:45%;">
+
+<p>不难发现，在<code>--------------FOR FUN------------------</code>和<code>---------------------------------------</code>间有占位符<code>%s</code>，根据位置推测该位置为我们的目标字符串<code>This...</code>的位置</p>
+</li>
+<li><p>回到<code>_main</code>函数位置，使用<code>F5</code>快捷键对函数进行反编译</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/5.jpg" style="zoom:45%;">
+
+<p>不难看出<code>printf</code> 函数有两个参数。第一个参数是先前我们所看到的<code>aForFunS</code> 字符串，第二个参数是一个指针，它指向内存地址 <code>0x40004E</code> 处的字符串。当 <code>printf</code> 函数执行时，<code>%s</code> 会被替换为内存地址 <code>0x40004E</code> 处的字符串。</p>
+</li>
+<li><p>分析至此，我们不难推测我们的目标字符串<code>This...</code>位于内存地址 <code>0x40004E</code> 处，该内存地址是一个绝对地址，它指向程序 <code>crypto.exe</code> 的内存空间中的一个位置</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/6.jpg" style="zoom:45%;">
+
+<p>但是查找后发现IDA的内存地址是从<code>.text:00401000</code>处开始的，也就是说在静态情况下我们无法查看内存地址 <code>0x40004E</code> 处的内容，因此可选择在<code>IDA</code>中对该<code>exe</code>文件进行动态调试进行查看（使用<code>010Editor</code>也可以找到该地址所存内容）</p>
+</li>
+<li><p>在<code>printf</code>函数处打上断点，开启动调</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/7.jpg" style="zoom:45%;">
+
+<p>此时我们再双击内存地址 <code>0x40004E</code> 即可进入查看该地址所存内容，正是我们要找的目标字符串<code>This...</code>所存位置</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/8.jpg" style="zoom:45%;">
+
+
+</li>
+<li><p>因此该字符串的内存起始地址即为 <code>0x40004E</code> ，而通过人工计数可知该字符串长度为43位</p>
+</li>
+<li><p>当然，我们也可以通过更为稳妥的方式对字符串长度进行计数：如果能在该程序中找到一个<code>strlen</code>函数的话通过动调更改字符串指针即可自动测出准确的目标字符串长度，<code>strlen</code>函数在加密函数中比较常见，因此可能能够找到。</p>
+</li>
+<li><p>使用<code>F5</code>快捷键对函数进行反编译快速浏览整个程序，果然在名为<code>sub_401700()</code>的函数中找到了一个<code>strlen</code>函数</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/9.jpg" style="zoom:45%;">
+
+<p>该函数原本测量的是名为<code>byte_407444</code>字符串的长度</p>
+</li>
+<li><p>返回汇编代码查看<code>strlen</code>函数的具体实现</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/10.jpg" style="zoom:45%;">
+
+<p>这段代码将寄存器 <code>edi</code> 的值设置为内存地址 <code>0x407444</code> 处的字节的地址接下来，函数使用 <code>repne scasb</code> 指令在以 <code>edi</code> 为起始地址的内存区域中查找与 <code>al</code> 寄存器相等的字节。由于之前将寄存器 <code>eax</code> 清零，因此这个指令实际上是在查找第一个值为 <code>0x00</code> 的字节，其实就是相当于在找字符串的结尾位置。当查找完成后，函数使用 <code>not</code> 和 <code>dec</code> 指令计算出查找到的字节与起始地址之间的距离，并将结果存储在寄存器 <code>ecx</code> 中，那么也就是说，我们只要将我们的目标字符串的内存地址 <code>0x40004E</code> 存到<code>edi</code>中，最后查看<code>ecx</code>中的值即可得到准确长度的答案。</p>
+</li>
+<li><p>分析完毕，打上断点后开始动调</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/11.jpg" style="zoom:45%;">
+
+<p>单步步过后修改<code>edi</code>中的地址值为 <code>0x40004E</code> </p>
+<img src="/2023/05/12/mi-ma-ni-xiang/12.jpg" style="zoom:45%;">
+
+<p>继续单步步过到运算位置之后检查<code>ecx</code>中的值，为<code>2B</code>位，转换为10进制为43位</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/13.jpg" style="zoom:45%;">
+
+
+</li>
+<li><p><strong>因此，不难得出如下结论：开头<code>“This program cannot be run ...” </code>这个字符串的内存起始地址为 <code>0x40004E</code> ，字符串长度为43位</strong></p>
+</li>
+</ul>
+<hr>
+<h5 id="问题-2"><a href="#问题-2" class="headerlink" title="问题-2"></a>问题-2</h5><ul>
+<li><p>定位到<code>main</code>函数了解程序结构，在<code>printf</code>函数将提示信息打印后调用了三个函数，分别为<code>sub_4015C0</code>、<code>sub_401770</code>和<code>sub_40161C</code>，下面逐一进行分析</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/14.jpg" style="zoom:45%;">
+
+
+</li>
+<li><p>进入<code>sub_4015C0</code>函数</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/15.jpg" style="zoom:45%;">
+
+<p>本段代码的用于接收输入值，并将输入值存入<code>byte_407444</code>中，接下来是一段熟悉的刚刚分析过的代码，用于测量输入值的长度（也就是用于实现<code>strlen</code>函数功能），并存入<code>eax</code>中；后将长度与<code>byte_4040E4</code>值比较，若二者不相等，则退出程序。</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/16.jpg" style="zoom:45%;">
+
+<p>进入<code>byte_4040E4</code>查看到其存值为9，<strong>也就是说输入值的长度必须为9位</strong>。</p>
+</li>
+<li><p>在上一步的分析中，无意中发现存于<code>.data</code>数据段的其他静态字符串数据，察觉到熟悉数据串<code>67452301</code>等等，该数据串为<code>MD5</code>加密方式中的标准幻数，<strong>因此跳跃分析该程序可能是基于<code>MD5</code>方式并加以改进加密的</strong>。</p>
+</li>
+<li><p>为了进一步确定推测，对该数据串使用快捷键<code>x</code>进行交叉引用分析，定位至调用该数据串的位置</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/17.jpg" style="zoom:45%;">
+
+<p>使用<code>F5</code>辅助分析，经过代码阅读可确定<code>sub_40210C</code>函数是<code>MD5</code>加密函数，且该函数的第一个参数用于指向密文结果，第二个参数为待加密字符串，第三个参数为加密位数。为了避免之后分析忘记，使用快捷键<code>n</code>将该函数重命名为<code>md5_encryption</code>。</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/18.jpg" style="zoom:45%;">
+
+
+</li>
+<li><p>处理完上述内容后，继续回到第一个函数<code>sub_4015C0</code>进行分析，经过刚刚的分析我们不难得知，第一个函数的作用在于判断输入内容是否满足9位的条件，因此我们可将函数<code>sub_4015C0</code>重命名为<code>if_input9</code>，并将存储输入值的参数<code>byte_407444</code>命名为<code>input</code>、<code>byte_4040E4</code>重命名为<code>len_9</code>。</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/20.jpg" style="zoom:45%;">
+
+
+</li>
+<li><p>接下来分析第二个函数<code>sub_401770</code>，通过汇编代码可初步分析出该段函数在对<code>input</code>字符串进行字符类型的核查</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/21.jpg" style="zoom:45%;">
+
+<p>使用<code>F5</code>辅助分析，发现函数确实在对<code>input</code>字符串进行字符类型的核查，且<strong>要求字符串 <code>input</code> 中的每个字符都为为数字、大写字母或下划线，如果字符串中存在不符合条件的字符则退出程序</strong>。</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/22.jpg" style="zoom:45%;">
+
+
+</li>
+<li><p>继续分析发现函数的<code>return</code>值为另一个函数<code>sub_401700</code>，下面对其进行分析</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/19.jpg" style="zoom:45%;">
+
+<p>这段函数的主要内容是通过一种特定规则从字符串<code>a1234567890Abcd</code>中选定一些字符生成一个新的9位字符串<code>dword_4040C0</code>，我们不妨命名其为<code>new</code>，其中参数<code>v2</code>的值为38，因此我们不妨把函数<code>sub_401700</code>称作<code>gener_new</code>，把函数<code>sub_401770</code>重命名为<code>check_and_gener</code>。</p>
+<p>根据该伪代码写了一个函数<code>sub_401700</code>的<code>python</code>程序实现如下（该程序只用做逻辑结构展示而无实际运行能力，因为<code>input</code>值还未知）：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">abc = '1234567890_ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+new = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+input_list = [None] * 9
+
+for v0 in range(5):
+    v2=38
+    v3=0
+    while v3&lt;37:
+        if input_list[v0] == abc[v3]:
+            new[v0] = v3
+        v3+=1
+print(new)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p><strong>这时间突然发现了一个问题：</strong>关于<code>input</code>字符串，在<code>IDA</code>中显示，该字符串只开辟了一个5位的数组，然而函数的种种逻辑表明<code>input</code>存储内容为9位且没有溢出，而且在对该字符串检验长度时也依然为9位没有问题，这着实让人感到困扰。</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/23.jpg" style="zoom:45%;">
+
+<p>继续浏览该地址下方的内容发现，紧接着该数组，有一个名为<code>byte_407449[7]</code>的数组开辟了7位空间，因此<strong>猜测该数组应该能够承接<code>input</code>字符串溢出的最后4位数据</strong></p>
+<img src="/2023/05/12/mi-ma-ni-xiang/24.jpg" style="zoom:45%;">
+
+<p>带着猜测进行动调验证，输入了9位测试数据再回到<code>byte_407449[7]</code>处，发现该数组确实存储了<code>input</code>字符串溢出的最后4位数据，这确实很有意思，但当前还不知道这样处理的意义，暂且将该数组命名为<code>last_4</code></p>
+<img src="/2023/05/12/mi-ma-ni-xiang/26.jpg" style="zoom:45%;">
+
+<img src="/2023/05/12/mi-ma-ni-xiang/25.jpg" style="zoom:45%;">
+
+
+</li>
+<li><p>最后来分析第三个函数<code>sub_40161C</code>，该函数的汇编代码有些复杂，直接<code>F5</code>进行辅助分析</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/27.jpg" style="zoom:45%;">
+
+<p>其中<code>byte_404021</code>存储的内容为3，因此<code>v1</code>值为3，<code>byte_404020</code>存储的内容为9，因此<code>v6</code>值为9，下方紧接着是一个字符串变换操作，其大致作用在于对<code>input</code>的9位内容根据一定方式进行变换，数据均选自字符串<code>a1234567890Abcd</code>，同样的，根据该伪代码写一个该变换的<code>python</code>程序实现如下（该程序同样只用做逻辑结构展示而无实际运行能力）：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">0=9
+v1 = 3
+v6 = 9
+v2 = 0
+while v2 != v0:
+    input_list[v2] = abc[ (9 + 3 * new[v2]) % 37 ]
+    v2+=1
+
+print(input_list)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在这个变换之后进行的就是我们先前已经提到的<code>MD5</code>加密，值得一提的是，<strong>该程序只将<code>input</code>的前5位进行了加密操作</strong>，并将密文存储到<code>Str1</code>中，之后将<code>Str1</code>和<code>Str2</code>进行了对比，如果<strong>二者相等且如果经过了变换之后的输入值<code>input</code>的后四位的值为<code>32Z2</code>则会进行弹窗操作</strong>，那么我们不难推测<code>Str2</code>中存储着正确的密文，进入<code>Str2</code>查看，果不其然，得到正确密文：<code>f8728f24e01c1aaf54e23f7f0d591384</code></p>
+<img src="/2023/05/12/mi-ma-ni-xiang/28.jpg" style="zoom:45%;">
+
+
+</li>
+<li><p>现在我们已经知道该加密方法为<code>MD5</code>，密文为<code>f8728f24e01c1aaf54e23f7f0d591384</code>，明文长度为5，<strong>那么通过暴力破解可以获得明文为：<code>K502G</code></strong></p>
+<img src="/2023/05/12/mi-ma-ni-xiang/29.jpg" style="zoom:45%;">
+
+
+</li>
+<li><p>该程序的全部内容已分析完毕，下面进行输入字符的推演，根据上述内容的分析，不难写出一个<code>input</code>字符串转换的全过程<code>python</code>程序：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">abc = '1234567890_ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+new = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+input_list = [None] * 9
+
+
+for v0 in range(5):
+    v2=38
+    v3=0
+    while v3&lt;37:
+        if input1_list[v0] == abc[v3]:
+            new[v0] = v3
+        v3+=1
+print(new)
+
+v0=9
+v1 = 3
+v6 = 9
+v2 = 0
+while v2 != v0:
+    input_list[v2] = abc[ (9 + 3 * new[v2]) % 37 ]
+    v2+=1
+
+print(input_list)
+#input_list=K502G32Z2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>那么情况已经很明朗了，根据我们前面的分析，已经知道<code>input</code>字符串在经过不断变化之后最终输出结果为<code>K502G32Z2</code>，我们只需要对这个程序进行逆向即可，我们根据转换过程可以写出一个逆向程序：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pre_list = [None] * 9
+abc = '1234567890_ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+abc_list =list(abc)
+input = 'K502G32Z2'
+input_list = list(input)
+new = [None] * 9
+v0=9
+v1 = 3
+v6 = 9
+v2 = 0
+
+
+for i in range (9):
+    for x in range(37):
+        if(input_list[i] == abc[ (9 + 3 * x) % 37 ]):
+            new[i]=x
+            continue
+print(new)
+
+for v0 in range(9):
+    v2=38
+    v3=0
+    while v3&lt;37:
+        if  new[v0] == v3:
+            pre_list[v0] = abc[v3]
+        v3+=1
+print(pre_list)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>这样我们就能获得<code>pre_list</code>即先前的<code>input</code>字符串为：<code>5M1LE_L0L</code></strong></p>
+<img src="/2023/05/12/mi-ma-ni-xiang/30.jpg" style="zoom:45%;">
+</li>
+<li><p>我们进入<code>cryptp.exe</code>文件进行验证：</p>
+<img src="/2023/05/12/mi-ma-ni-xiang/31.jpg" style="zoom:45%;">
+
+<p><strong>实验成功</strong></p>
+</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">autumnwt</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://autumnwt.github.io/2023/05/12/mi-ma-ni-xiang/">https://autumnwt.github.io/2023/05/12/mi-ma-ni-xiang/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">autumnwt</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/">
+                                    <span class="chip bg-color">逆向工程</span>
+                                </a>
+                            
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">
+                                    <span class="chip bg-color">汇编语言</span>
+                                </a>
+                            
+                                <a href="/tags/MD5/">
+                                    <span class="chip bg-color">MD5</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2023/05/12/mi-ma-ni-xiang/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="密码逆向">
+                        
+                        <span class="card-title">密码逆向</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E4%B8%8E%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/" class="post-category">
+                                    汇编语言与逆向工程
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/">
+                        <span class="chip bg-color">逆向工程</span>
+                    </a>
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">汇编语言</span>
+                    </a>
+                    
+                    <a href="/tags/MD5/">
+                        <span class="chip bg-color">MD5</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/05/09/ida-gong-ju-shi-yong/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="IDA工具使用">
+                        
+                        <span class="card-title">IDA工具使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E4%B8%8E%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/" class="post-category">
+                                    汇编语言与逆向工程
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/">
+                        <span class="chip bg-color">逆向工程</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">工具</span>
+                    </a>
+                    
+                    <a href="/tags/IDA/">
+                        <span class="chip bg-color">IDA</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <a href="/about" target="_blank">AutumnWt</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">48.4k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/autumnwt" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:h2003163733@126.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1727950899" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1727950899" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="7eKgBF3JrRHloZKOHSJnVwMw-gzGzoHsz" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

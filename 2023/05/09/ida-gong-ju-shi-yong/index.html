@@ -6,9 +6,10 @@
     <meta charset="utf-8">
     <meta name="keywords" content="IDA工具使用, AutumnWt">
     <meta name="description" content="IDA工具使用快捷键a ：将数据转换为字符串
+r：转ascii码
 f5：一键反汇编
 esc：回退键，能够倒回上一部操作的视图（只有在反汇编窗口才是这个作用，如果是在其他窗口按下esc，会关闭该窗口）
-shift+f12：可以打开string窗口，一键找出所有的">
+shift+f12：可以打开string">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -411,7 +412,7 @@ shift+f12：可以打开string窗口，一键找出所有的">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    449
+                    499
                 </div>
                 
 
@@ -437,6 +438,7 @@ shift+f12：可以打开string窗口，一键找出所有的">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="IDA工具使用"><a href="#IDA工具使用" class="headerlink" title="IDA工具使用"></a>IDA工具使用</h2><h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><p><code>a</code> ：将数据转换为字符串</p>
+<p><code>r</code>：转ascii码</p>
 <p><code>f5</code>：一键反汇编</p>
 <p><code>esc</code>：回退键，能够倒回上一部操作的视图（只有在反汇编窗口才是这个作用，如果是在其他窗口按下esc，会关闭该窗口）</p>
 <p><code>shift+f12</code>：可以打开string窗口，一键找出所有的字符串，右击setup，还能对窗口的属性进行设置</p>
@@ -459,6 +461,8 @@ shift+f12：可以打开string窗口，一键找出所有的">
 <p><code>F2</code>：添加断点</p>
 <p><code>F7</code>：单步步入</p>
 <p><code>F8</code>：单步步过</p>
+<p><code>Alt+t</code>：字符串查找</p>
+<p><code>Ctrl+t</code>：字符串继续查找</p>
 <hr>
 <h3 id="按键"><a href="#按键" class="headerlink" title="按键"></a>按键</h3><h4 id="开启动调"><a href="#开启动调" class="headerlink" title="开启动调"></a>开启动调</h4><ul>
 <li><p>选择use source level debugging：<img src="/2023/05/09/ida-gong-ju-shi-yong/1.jpg" style="zoom:100%;"></p>
@@ -478,6 +482,8 @@ shift+f12：可以打开string窗口，一键找出所有的">
 <li>进入动调模式后，右击想要修改的指令</li>
 <li>选择<code>patching</code>-<code>change byte</code>即可</li>
 </ul>
+<hr>
+<h3 id="汇编语言中的一些解惑"><a href="#汇编语言中的一些解惑" class="headerlink" title="汇编语言中的一些解惑"></a>汇编语言中的一些解惑</h3><p><code>offset</code>：运算符用于获取变量或标签在内存中的地址</p>
 
                 
             </div>
@@ -630,18 +636,17 @@ shift+f12：可以打开string窗口，一键找出所有的">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/05/09/ida-gong-ju-shi-yong/">
+                <a href="/2023/05/12/mi-ma-ni-xiang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="IDA工具使用">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="密码逆向">
                         
-                        <span class="card-title">IDA工具使用</span>
+                        <span class="card-title">密码逆向</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -651,9 +656,9 @@ shift+f12：可以打开string窗口，一键找出所有的">
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-09
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-05-12
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -666,7 +671,6 @@ shift+f12：可以打开string窗口，一键找出所有的">
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -674,12 +678,16 @@ shift+f12：可以打开string窗口，一键找出所有的">
                         <span class="chip bg-color">逆向工程</span>
                     </a>
                     
-                    <a href="/tags/%E5%B7%A5%E5%85%B7/">
-                        <span class="chip bg-color">工具</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
-                    <a href="/tags/IDA/">
-                        <span class="chip bg-color">IDA</span>
+                    <a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">汇编语言</span>
+                    </a>
+                    
+                    <a href="/tags/MD5/">
+                        <span class="chip bg-color">MD5</span>
                     </a>
                     
                 </div>
@@ -871,7 +879,7 @@ shift+f12：可以打开string窗口，一键找出所有的">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">45.6k</span>
+                        class="white-color">48.4k</span>
             
             
             
